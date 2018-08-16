@@ -57,7 +57,7 @@ Route::post('/register', function (Request $request) {
             }
         }
 
-        if (count($user)) {
+        if ($userExists) {
             $transaction = $user->transactions()->create([
                 'user_id' => $user->id,
             ]);
