@@ -14,6 +14,7 @@
 use App\User;
 use Illuminate\Http\Request;
 use App\Mail\EventRegistered;
+use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
     return view('index');
@@ -83,6 +84,18 @@ Route::get('/payment-options', function () {
 });
 
 Route::get('/paymentSuccessful', function () {
+    $transaction_ID = Input::get('p2', false);    //  Transaction ID
+    $amount = Input::get('p6', false);            //  Amount
+    $payment_type = Input::get('p7', false);      //  Payment Type
+    $package_type = Input::get('p8', false);      //  Package Type
+
+    $transaction = Transaction::find($transaction_ID)->update([
+        'payment_type' => $payment_type,
+        'package_type' => $package_type,
+        'amount' => $user->id,
+        'success_state' => 1,
+    ]);
+
     return view('paymentSuccessful');
 });
 
