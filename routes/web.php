@@ -23,10 +23,11 @@ Route::post('/register', function (Request $request) {
     //  If we have the email provided
     if (!empty($request->input('email'))) {
         // Get the user from the database
-        $user = User::where('email', $request->input('email'))->first();
+        $userExists = User::where('email', $request->input('email'))->count();
 
         //  If the user exists
-        if (count($user)) {
+        if ($userExists) {
+            $user = User::where('email', $request->input('email'))->first();
             //  Find out if they have payed successfully before
             $hasTransactedBefore = $user->transactions->where('success_state', 1)->count();
 
