@@ -11,7 +11,7 @@
 |
 */
 
-use App\Transaction
+use App\Transaction;
 use App\User;
 use Illuminate\Http\Request;
 use App\Mail\EventRegistered;
