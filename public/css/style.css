@@ -729,10 +729,10 @@
 }
 
 .registration_info {
-  background: #fff;
-  padding: 0 40px 25px;
+  background: #fff !important;
+  padding: 0 40px 25px !important;
 }
 
 .registration_info tr {
-  border-top: 1px solid #d4d4d4;
+  border-top: 1px solid #d4d4d4 !important;
 }
