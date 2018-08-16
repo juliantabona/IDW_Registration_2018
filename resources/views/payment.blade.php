@@ -78,11 +78,13 @@
 									<input type="hidden" name="p1" value="3463"> 
                                     <input type="hidden" name="p2" value="{{ Session::get('transaction')->id }}"> 
                                     <input type="hidden" name="p3" value="Early Ticket"> 
+									
 									<select class="form-control" name="p4" data-cesta-feira-attribute="" >
 										<option value="2064">Students: 2,000 (BWP)</option>
 										<option value="2064">LMIC COUNTRIES: 2,000 (BWP)</option>
 										<option value="6192">All Others: 6,000 (BWP)</option>
 									</select>
+
 									<input type="hidden" name="UrlsProvided" value="Y">  
 									<input type="hidden" name="ApprovedUrl" value="https://idw2018.optimumqbw.com/paymentSuccessfull">  
 									<input type="hidden" name="DeclinedUrl" value="http://idw2018.optimumqbw.com/paymentUnSuccessfull">   
