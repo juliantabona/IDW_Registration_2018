@@ -93,7 +93,7 @@ Route::get('/paymentSuccessful', function () {
     $transaction = Transaction::find($transaction_ID)->update([
         'payment_type' => $payment_type,
         'package_type' => $package_type,
-        'amount' => $user->id,
+        'amount' => $amount,
         'success_state' => 1,
     ]);
 
