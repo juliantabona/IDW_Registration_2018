@@ -17,17 +17,28 @@
 <!-- //web font -->
 </head>
 <body>
-		<div style="display: block;border-bottom: 1px solid #f7f7f778;background: #ca2f00;">
-				<ul style="width: 100%;display: inline-block;">
-					<li style="float: left;"><img src="http://www.internationaldataweek.org/sites/all/themes/eventme/logo.png" style="max-width: 200px;padding: 0px;margin: 10px 0 0 30px;"></li>
-			  <li style="float: right;">
-				  <a href="/faq" class="menu-link">FAQ</a>
-				</li>
-			  <li style="float: right;">
-						<a href="/" class="menu-link">REGISTER</a>
-			  </li>
-				</ul>
+	<div style="display: block;border-bottom: 1px solid #f7f7f778;background: #ca2f00;">
+		<ul style="width: 100%;display: inline-block;">
+			<li style="float: left;"><img src="http://www.internationaldataweek.org/sites/all/themes/eventme/logo.png" style="max-width: 200px;padding: 0px;margin: 10px 0 0 30px;"></li>
+		<li style="float: right;">
+			<a href="/faq" class="menu-link">FAQ</a>
+		</li>
+		<li style="float: right;">
+				<a href="/" class="menu-link">REGISTER</a>
+		</li>
+		</ul>
+	</div>
+
+	@if(Session::has('alert'))
+		<div class="col-6 offset-3 mt-4">
+			<div class="alert alert-{{ Session::get('alert')[1] }} p-4" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true" class="d-block mt-1 text-small">×</span>
+				</button>
+				{!! Session::get('alert')[0] !!}
 			</div>
+		</div>
+	@endif
 
 		<div class="registration_info row">
 
@@ -94,17 +105,6 @@ border-top: 1px solid #d4d4d4;
 			<div class="loader"></div>
 		</div>
 		<h2 style="color: #fff;text-align:center;margin:10px 0 0;font-size:30px">Registration</h2>
-
-        @if(Session::has('alert'))
-            <div class="col-6 offset-3 mt-4">
-                <div class="alert alert-{{ Session::get('alert')[1] }}" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true" class="d-block mt-1 text-small">×</span>
-                    </button>
-                    {!! Session::get('alert')[0] !!}
-                </div>
-            </div>
-        @endif
 
 		<div class="main-registration-container">
 			<div class="registration-box"> 
@@ -723,7 +723,7 @@ border-top: 1px solid #d4d4d4;
 	</div>	 
 	<!-- copyright -->
 	<div class="w3copyright-agile">
-		<p><span>© International Data Week 2018. All rights reserved</span><br> Design by <a href="http://www.optimumqbw.com" target="_blank">Optimum Q</a></p>
+		<p><span>© International Data Week 2018. All rights reserved</span><br> Designed And Developed by <a href="http://www.optimumqbw.com" target="_blank">Optimum Q</a></p>
 	</div>
 	<!-- //copyright -->
 		
