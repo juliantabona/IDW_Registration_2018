@@ -525,7 +525,7 @@
 						</div>  
 
 						<div class="input-box">
-							<span class="mb-2 d-block">I have Read and Agree to the <a href="#" >Terms and Conditions, Privacy Policy and Disclaimer*</a></span>
+							<span class="mb-2 d-block">I have Read and Agree to the <a href="/pdf/TnCs%20-%20Privacy%20Policy%20-%20Disclaimer.pdf" target="_blank">Terms and Conditions, Privacy Policy and Disclaimer*</a></span>
 							<div class="wthree-text">  
 								<label class="anim">
 									<input type="radio" name="terms_and_conditions" value="YES" class="terms_and_conditions checkbox">

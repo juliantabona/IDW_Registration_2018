@@ -45,7 +45,7 @@
 						<h4>EARLY BIRD RATE</h4>
 						<p class="mb-4">Deadline 30 September 2018</p>
 						<div class="input-box">
-							<span class="mb-2 d-block">I have Read and Agree to the <a href="#" >Terms and Conditions, Privacy Policy and Disclaimer*</a></span>
+							<span class="mb-2 d-block">I have Read and Agree to the <a href="/pdf/TnCs%20-%20Privacy%20Policy%20-%20Disclaimer.pdf" target="_blank">Terms and Conditions, Privacy Policy and Disclaimer*</a></span>
 							<div class="wthree-text">  
 								<label class="anim">
 									<input type="radio" name="terms_and_conditions" value="YES" class="terms_and_conditions checkbox">
@@ -99,7 +99,7 @@
 							</div> 
 						</div>   
 						
-						<span>Information on cancellation and reimbursement can be found in the<a target="_blank" href="/pdf/TnCs%20-%20Privacy%20Policy%20-%20Disclaimer.pdf">Terms and Conditions, Privacy Policy and Disclaimer.</a></span>
+						<span>Information on cancellation and reimbursement can be found in the <a href="/pdf/TnCs%20-%20Privacy%20Policy%20-%20Disclaimer.pdf" target="_blank">Terms and Conditions, Privacy Policy and Disclaimer.</a></span>
 						<p class="mt-3 mb-2">Notes:</p>
 						<span>1. Rates include attendance at all sessions throughout the meeting, the welcome reception and the event dinner, as well as morning/afternoon tea and lunches on each day of the meeting.</span>
 						<br><br> 
