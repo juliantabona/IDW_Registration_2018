@@ -94,6 +94,18 @@ border-top: 1px solid #d4d4d4;
 			<div class="loader"></div>
 		</div>
 		<h2 style="color: #fff;text-align:center;margin:10px 0 0;font-size:30px">Registration</h2>
+
+        @if(Session::has('alert'))
+            <div class="col-6 offset-3 mt-4">
+                <div class="alert alert-{{ Session::get('alert')[1] }}" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true" class="d-block mt-1 text-small">×</span>
+                    </button>
+                    {!! Session::get('alert')[0] !!}
+                </div>
+            </div>
+        @endif
+
 		<div class="main-registration-container">
 			<div class="registration-box"> 
 				
