@@ -34,7 +34,7 @@
                     
 				<section class="col-sm-12">
 																	<a id="main-content"></a>
-												<h2 style="color: #000;text-align:center;margin:30px 0 20px;">Registration Details</h2>
+												<h2 style="color: #000;text-align:center;margin:30px 0 30px;font-size:30px;">Registration Details</h2>
 																																																  <div class="region region-content">
 <section id="block-system-main" class="block block-system clearfix">
 
@@ -73,9 +73,9 @@ width: 100%;
 <p style="
 padding-top: 5px;
 border-top: 1px solid #d4d4d4;
-"><br><b>NOTES</b></p><p>1) Please note, the above&nbsp;rates include attendance at all sessions throughout meeting (keynote addresses, SciDataCon 2018 sessions, RDA’s 12<sup>th</sup>&nbsp;Plenary Meeting sessions, panel discussions, etc.), the welcome reception and the event dinner, as well as morning/afternoon tea and lunches on each day of the meeting
-.</p><p>2) Credit/Debit card payments are subject to an additional processing fee of 3.2%
-.</p><p>3) Registrants are liable for all bank transfer charges.</p>
+"><br><b>NOTES</b><br/><br/></p><p>1) Please note, the above&nbsp;rates include attendance at all sessions throughout meeting (keynote addresses, SciDataCon 2018 sessions, RDA’s 12<sup>th</sup>&nbsp;Plenary Meeting sessions, panel discussions, etc.), the welcome reception and the event dinner, as well as morning/afternoon tea and lunches on each day of the meeting
+.</p><br/><p>2) Credit/Debit card payments are subject to an additional processing fee of 3.2%
+.</p><br/><p>3) Registrants are liable for all bank transfer charges.</p>
 
 </div></div></div>    </article>
 
@@ -90,7 +90,7 @@ border-top: 1px solid #d4d4d4;
 	
 	<!-- main -->
 	<div class="main-w3layouts wrapper">
-		<h2 style="color: #000;text-align:center;margin:30px 0 20px;font-size:28px">Registration Details</h2>
+		<h2 style="color: #fff;text-align:center;margin:10px 0 0;font-size:30px">Registration</h2>
 		<div class="main-registration-container">
 			<div class="registration-box"> 
 				<a href="/payment-options" style="float: right;">Already Registered?</a><br>
