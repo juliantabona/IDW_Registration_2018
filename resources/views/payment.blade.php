@@ -86,9 +86,9 @@
 									</select>
 
 									<input type="hidden" name="UrlsProvided" value="Y">  
-									<input type="hidden" name="ApprovedUrl" value="https://idw2018.optimumqbw.com/paymentSuccessfull">  
-									<input type="hidden" name="DeclinedUrl" value="http://idw2018.optimumqbw.com/paymentUnSuccessfull">   
-									<input type="hidden" name="p10" value="http://idw2018.optimumqbw.com/paymentUnSuccessfull"> 			
+									<input type="hidden" name="ApprovedUrl" value="https://idw2018.optimumqbw.com/paymentSuccessful">  
+									<input type="hidden" name="DeclinedUrl" value="http://idw2018.optimumqbw.com/paymentUnSuccessful">   
+									<input type="hidden" name="p10" value="http://idw2018.optimumqbw.com/paymentUnSuccessful"> 			
 								</label>  
 								<div class="clear"> </div>
 							</div>  
