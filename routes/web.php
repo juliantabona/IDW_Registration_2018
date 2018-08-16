@@ -93,3 +93,7 @@ Route::get('/paymentUnSuccessful', function () {
 Route::get('/emailtemplate', function () {
     return view('sendEmailTemplate');
 });
+
+Route::get('/faq', function () {
+    return view('faq');
+});
