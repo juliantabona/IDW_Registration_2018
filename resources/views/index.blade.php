@@ -90,7 +90,7 @@ border-top: 1px solid #d4d4d4;
 	
 	<!-- main -->
 	<div class="main-w3layouts wrapper">
-		<h1>Registration</h1>
+		<h2 style="color: #000;text-align:center;margin:30px 0 20px;font-size:28px">Registration Details</h2>
 		<div class="main-registration-container">
 			<div class="registration-box"> 
 				<a href="/payment-options" style="float: right;">Already Registered?</a><br>
