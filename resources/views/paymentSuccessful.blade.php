@@ -54,8 +54,8 @@
                             </h4>
                                 
                             <div class="section-header">
-                                <i class="fa fa-check mr-2" aria-hidden="true"></i>
-                                <h3 >PAYMENT SUCCESSFUL!</h3>
+                                
+                                <h3><i class="fa fa-check mr-2" aria-hidden="true"></i>PAYMENT SUCCESSFUL!</h3>
                             </div>  
                             <p class="mb-4" style="font-weight: 300;">Thank you for registering. Your booking has been confirmed successfully. Go ahead and check your email for details or <a href="/">Register A Collegue</a></p>
                             <a href="http://internationaldataweek.org/visa-and-travel-information" class="btn">Visa And Travel Information</a>
