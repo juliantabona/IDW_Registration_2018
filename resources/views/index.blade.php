@@ -89,7 +89,7 @@ border-top: 1px solid #d4d4d4;
 .</p><br/><p>3) Registrants are liable for all bank transfer charges.</p>
 
 </div></div></div>    </article>
-
+<a href="https://www.xe.com/currencyconverter" target="_blank" class="btn btn-half d-block ml-auto mr-auto mt-4">Currrency Converter</a>
 </section>
 </div>
 					
@@ -650,7 +650,7 @@ border-top: 1px solid #d4d4d4;
 						</div>  
 						
 						<div class="input-box">
-							<span class="mb-2 d-block">Do you give permission to the organisers of International Data Week to send you information related to <a href="https://datascience.codata.org"><i>Data Science Journal</i></a> contributions?</span>
+							<span class="mb-2 d-block">Do you give permission to the organisers of International Data Week to send you information related to <a href="https://datascience.codata.org" target="_blank"><i>Data Science Journal</i></a> contributions?</span>
 							<div class="wthree-text">  
 								<label class="anim">
 									<input type="radio" name="send_data_science_journal_updates" value="YES" class="send_data_science_journal_updates checkbox">
