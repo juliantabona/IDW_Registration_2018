@@ -38,7 +38,7 @@
                     @if (Session::exists('user') && Session::exists('transaction') ) 
                         <h4 class="mb-2">
                                 <b style="font-weight: 600;color: #229c06;">
-                                    Paying Customer: 
+                                    Delegate: 
                                     {{ Session::get('user')->first_name }} {{ Session::get('user')->last_name }}</b>
                             </h4>
                                 
