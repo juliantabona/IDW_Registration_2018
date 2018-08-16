@@ -90,9 +90,13 @@ border-top: 1px solid #d4d4d4;
 	
 	<!-- main -->
 	<div class="main-w3layouts wrapper">
+		<div class="loader-box">
+			<div class="loader"></div>
+		</div>
 		<h2 style="color: #fff;text-align:center;margin:10px 0 0;font-size:30px">Registration</h2>
 		<div class="main-registration-container">
 			<div class="registration-box"> 
+				
 				<a href="/payment-options" style="float: right;">Already Registered?</a><br>
 				<form action="/register" method="POST"> 
 					{{ csrf_field() }}
@@ -590,6 +594,7 @@ border-top: 1px solid #d4d4d4;
 						<button type="button" class="btn btn-half btn-next">NEXT</button>
 					</div>
 					<div id="section_D" class="section_box hide">
+						
 						<div class="section-header">
 							<h3>SECTION D</h3>
 							<p>'*' Indicates A Required Field</p>
@@ -966,6 +971,8 @@ border-top: 1px solid #d4d4d4;
 					e.preventDefault();
 					$('.terms_and_conditions:first').closest('.wthree-text').prepend( errMsg('Please accept the Terms and Conditions & Privacy Policy') );
 					err_count++;
+				}else{
+					$('.loader-box').css('display','block');
 				}
 				
 				return err_count;

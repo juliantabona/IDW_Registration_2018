@@ -763,3 +763,32 @@ a.menu-link {
 .card {
   border-radius: 0 !important;
 }
+
+.loader-box{
+  display: none;
+  background: #00000059;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.loader {
+  align-items: center;
+  justify-content: center;
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #ff6537;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin: 25% auto;
+  display: block;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
