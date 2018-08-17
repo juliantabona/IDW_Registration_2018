@@ -40,7 +40,7 @@ Route::post('/register', function (Request $request) {
             //  If they have paid
             if ($hasTransactedBefore != 0) {
                 //  Notify the user
-                $request->session()->flash('alert', array('You have already registered and paid for this event! Visit your email to verify. Thank you', 'success'));
+                $request->session()->flash('alert', array('You have already registered and paid for this event! Visit your email to verify or <a href="/resend/paymentConfirmation">resend payment confirmation email</a>. Thank you', 'success'));
 
                 return back();
 
@@ -86,7 +86,7 @@ Route::post('/register', function (Request $request) {
     }
 });
 
-Route::get('/payment-options', function () {
+Route::get('/payment-options', function (Request $request) {
     if (Session::has('user')) {
         //  Get the user
         $user = User::where('email', Session::get('user')->email)->first();
