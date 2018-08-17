@@ -53,7 +53,11 @@
                             <h3><i class="fa fa-exclamation-circle mr-2" aria-hidden="true"></i>PAYMENT UNSUCCESSFUL!</h3>
                         </div>  
                         <p class="mb-4" style="font-weight: 300;">Your payment was not processed. Please try again</p>
-                        <a href="/payment-options?email={{ $user->email }}" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">Proceed To Payment</a>
+                        <form action="/register" method="POST">
+                            {{ csrf_field() }}
+                            <input type="hidden" id="email" name="email" value="{{ Session::get('user')->email }}">
+                            <button type="submit" class="btn">Try Again</button>
+                        </form>
                             
                     @else
                         <div class="input-box">

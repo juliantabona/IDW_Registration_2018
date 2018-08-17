@@ -85,7 +85,7 @@
 															</p> 
 															<p>IDW 2018 Programme Committee</p>
 
-															<a href="/payment-options?email={{ $user->email }}" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">Proceed To Payment</a>
+															<a href="https://idw2018.optimumqbw.com/payment-options?email={{ $user->email }}" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">Proceed To Payment</a>
 															
 
 															<table style="width: 100%;background: #e23500;">

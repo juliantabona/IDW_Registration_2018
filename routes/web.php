@@ -112,7 +112,7 @@ Route::get('/payment-options', function (Request $request) {
         }
     }
 
-    return view('payment');
+    return view('payment/payment');
 });
 
 Route::get('/paymentSuccessful', function (Request $request) {
@@ -141,7 +141,7 @@ Route::get('/paymentSuccessful', function (Request $request) {
                             Mail::to($user->email)->send(new PaymentSuccess($user, $transaction));
 
                             //  Go to payment success page
-                            return view('paymentSuccessful');
+                            return view('payment/paymentSuccessful');
                         }
                     }
                 }
@@ -180,7 +180,7 @@ Route::get('/paymentUnSuccessful', function (Request $request) {
                             Mail::to($user->email)->send(new PaymentFail($user, $transaction));
 
                             //  Go to payment success page
-                            return view('paymentUnSuccessful');
+                            return view('payment/paymentUnSuccessful');
                         }
                     }
                 }
