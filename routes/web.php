@@ -14,6 +14,8 @@
 use App\Transaction;
 use App\User;
 use Illuminate\Http\Request;
+use App\Mail\PaymentFail;
+use App\Mail\PaymentSuccess;
 use App\Mail\EventRegistered;
 use Illuminate\Support\Facades\Input;
 
@@ -100,6 +102,8 @@ Route::get('/paymentSuccessful', function () {
         'amount' => $amount,
         'success_state' => 1,                       //  SUCCESSFUL
     ]);
+
+    return $transaction;
 
     if ($transaction) {
         //  Get the user
