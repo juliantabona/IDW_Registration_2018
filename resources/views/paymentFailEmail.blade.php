@@ -6,6 +6,7 @@
 		<title>{{ $user->first_name }}, - Payment Confirmation</title>
 	<link id="id2" rel="stylesheet" href="//fast.fonts.net/cssapi/e3b6f221-91c3-496d-85a5-e06a333f4d2d.css"><style type="text/css">@font-face { font-family: test; src: url('chrome-extension://dlpillepmpinmldcgomlekppgegbkkoc/AvenirLTStd-Heavy.otf'); }</style><link id="id2" rel="stylesheet" href="//fast.fonts.net/cssapi/e3b6f221-91c3-496d-85a5-e06a333f4d2d.css"><style type="text/css">@font-face { font-family: test; src: url('chrome-extension://dlpillepmpinmldcgomlekppgegbkkoc/AvenirLTStd-Heavy.otf'); }</style></head>
 	<body>
+        
 		<!--[if mso]>
 			<style type="text/css">
 				
@@ -16,7 +17,7 @@
 			</style>
 		<![endif]-->
 	
-		<table width="100%" cellpadding="0" cellspacing="0" border="0" class="background_main" style="background-color: #ffffff; padding-top: 20px; color: #434245; width: 100%;">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0" class="background_main" style="line-height: 24px;background-color: #ffffff; padding-top: 20px; color: #434245; width: 100%;">
 			<tbody>
 				<tr>
 					<td valign="top" class="sm_full_width" style="margin: 0 auto; width: 100%; display: block;">

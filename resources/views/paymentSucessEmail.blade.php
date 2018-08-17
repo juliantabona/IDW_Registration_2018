@@ -16,7 +16,7 @@
 			</style>
 		<![endif]-->
 	
-		<table width="100%" cellpadding="0" cellspacing="0" border="0" class="background_main" style="background-color: #ffffff; padding-top: 20px; color: #434245; width: 100%;">
+		<table width="100%" cellpadding="0" cellspacing="0" border="0" class="background_main" style="line-height: 24px;background-color: #ffffff; padding-top: 20px; color: #434245; width: 100%;">
 			<tbody>
 				<tr>
 					<td valign="top" class="sm_full_width" style="margin: 0 auto; width: 100%; display: block;">
