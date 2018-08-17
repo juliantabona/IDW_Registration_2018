@@ -96,20 +96,22 @@ Route::get('/paymentSuccessful', function () {
     $payment_type = Input::get('p7', false);      //  Payment Type
     $package_type = Input::get('p8', false);      //  Package Type
 
-    $transaction = Transaction::find($transaction_ID)->update([
+    $transaction_state = Transaction::find($transaction_ID)->update([
         'payment_type' => $payment_type,
         'package_type' => $package_type,
         'amount' => $amount,
         'success_state' => 1,                       //  SUCCESSFUL
     ]);
 
-    return $transaction;
+    if ($transaction_state) {
+        $transaction = Transaction::find($transaction_ID);
 
-    if ($transaction) {
-        //  Get the user
-        $user = User::where('email', $transaction->user_id)->first();
-        //  Mail the user on payment success
-        Mail::to($request->input('email'))->send(new PaymentSuccess($user));
+        if ($transaction) {
+            //  Get the user
+            $user = User::where('email', $transaction->user_id)->first();
+            //  Mail the user on payment success
+            Mail::to($request->input('email'))->send(new PaymentSuccess($user));
+        }
     }
 
     //  Go to payment success page
