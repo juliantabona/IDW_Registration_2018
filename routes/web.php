@@ -188,7 +188,7 @@ Route::get('/paymentUnSuccessful', function (Request $request) {
     return redirect('/');
 });
 
-Route::get('/resend/paymentConfirmation', function () {
+Route::get('/resend/paymentConfirmation', function (Request $request) {
     $user = Session::get('user');
 
     if ($user) {
