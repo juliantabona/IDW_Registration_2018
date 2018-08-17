@@ -184,7 +184,7 @@
 				}
 				
 				if(err_count != 0){
-					alert('Complete all fields before proceeding');
+					alert('Please accept the Terms and Conditions & Privacy Policy before paying via ' + payment_type);
 				}else{
 					if(payment_type == 'Bank Transfer'){
 						e.preventDefault();
