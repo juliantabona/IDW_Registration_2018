@@ -650,7 +650,7 @@ border-top: 1px solid #d4d4d4;
 						</div>  
 						
 						<div class="input-box">
-							<span class="mb-2 d-block">Do you give permission to the organisers of International Data Week to send you information related to <a href="https://datascience.codata.org" target="_blank"><i>Data Science Journal</i></a> contributions?</span>
+							<span class="mb-2 d-block">Do you give permission to the organisers of International Data Week to send you information related to the Special Collection of papers from this conference that will appear in the <a href="https://datascience.codata.org" target="_blank"><i>Data Science Journal</i></a>?</span>
 							<div class="wthree-text">  
 								<label class="anim">
 									<input type="radio" name="send_data_science_journal_updates" value="YES" class="send_data_science_journal_updates checkbox">
