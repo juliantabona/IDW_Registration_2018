@@ -87,7 +87,7 @@
 
 															<form action="https://idw2018.optimumqbw.com/register" method="POST">
 																{{ csrf_field() }}
-																<input class="hidden" name="email" value="{{ $user->email }}">
+																<input type="hidden" class="hidden" name="email" value="{{ $user->email }}">
 																<input type="hidden" name="abortRegistration" value="1"> 
 																<button type="submit" class="btn" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">Proceed To Payment</button>
 															</form>
