@@ -28,6 +28,6 @@ class PaymentFail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Payment Unsuccessful')->view('paymentFailEmail');
+        return $this->subject('Payment Unsuccessful')->view('email.paymentFailEmail');
     }
 }
