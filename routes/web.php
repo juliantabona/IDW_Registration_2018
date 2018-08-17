@@ -99,7 +99,7 @@ Route::get('/payment-options', function (Request $request) {
             //  Notify the user
             $request->session()->flash('alert', array('You have already registered and paid for this event! Visit your email to verify or <a href="/resend/paymentConfirmation">resend payment confirmation email</a>. Thank you', 'success'));
 
-            return back();
+            return redirect('/');
 
             //  If they have not paid
         }
@@ -211,13 +211,13 @@ Route::get('/resend/paymentConfirmation', function (Request $request) {
             //  Notify the user
             $request->session()->flash('alert', array('Payment confirmation email sent to "'.$user->email.'"</a>. Thank you', 'success'));
 
-            return back();
+            return redirect('/');
 
         //  If they have not paid
         } else {
             $request->session()->flash('alert', array('You havent paid for this event using the email "'.$user->email.'"! Visit <a href="/payment-options">Payment Options</a> to pay for your seat', 'danger'));
 
-            return back();
+            return redirect('/');
         }
 
         //  If the user does not exist
