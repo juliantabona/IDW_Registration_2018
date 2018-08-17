@@ -67,7 +67,7 @@
                         <div class="input-box">
                             <div class="input-highlight">
                                 <span style="font-size:20px !important;line-height: 14px;display: block;padding: 10px;margin: 10px 0 10px 0;">NOTE:</span> 
-                                <h4 style="margin: 15px 0 15px 0;">If you have registered before but haven't paid then enter your email below to view payment options. Otherwise click <a href="/">Here</a> to register.</h4>
+                                <h4 style="margin: 15px 0 15px 0;">If you have registered previously registered but hadn’t completed payment, please enter your email below to view payment options. If you have just completed the registration form, <a href="/">click here</a> to finalise your registration and to see payment options.</h4>
                             </div>
                             <form action="/register" method="POST">
                                 {{ csrf_field() }}
