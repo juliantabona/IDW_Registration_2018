@@ -106,6 +106,7 @@ Route::get('/paymentSuccessful', function () {
     if ($transaction_state) {
         $transaction = Transaction::find($transaction_ID);
 
+        return $transaction;
         if ($transaction) {
             //  Get the user
             $user = User::where('email', $transaction->user_id)->first();
