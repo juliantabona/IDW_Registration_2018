@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EventRegistered extends Mailable
+class PaymentSuccess extends Mailable
 {
     use Queueable, SerializesModels;
     public $user;
@@ -26,6 +26,6 @@ class EventRegistered extends Mailable
      */
     public function build()
     {
-        return $this->subject('Registration Confirmation')->view('registrationConfirmationEmail');
+        return $this->subject('Payment Confirmation')->view('paymentSucessEmail');
     }
 }

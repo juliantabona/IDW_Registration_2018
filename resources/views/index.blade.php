@@ -85,7 +85,7 @@ width: 100%;
 padding-top: 5px;
 border-top: 1px solid #d4d4d4;
 "><br><b>NOTES</b><br/><br/></p><p>1) Please note, the above&nbsp;rates include attendance at all sessions throughout meeting (keynote addresses, SciDataCon 2018 sessions, RDA’s 12<sup>th</sup>&nbsp;Plenary Meeting sessions, panel discussions, etc.), the welcome reception and the event dinner, as well as morning/afternoon tea and lunches on each day of the meeting
-.</p><br/><p>2) Credit/Debit card payments are subject to an additional processing fee of 3.2%
+.</p><br/><p>2) Credit/Debit card payments are subject to an additional payment handling fee of 3.2%
 .</p><br/><p>3) Registrants are liable for all bank transfer charges.</p>
 
 </div></div></div>    </article>

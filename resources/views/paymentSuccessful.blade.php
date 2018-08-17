@@ -57,7 +57,11 @@
                                 
                                 <h3><i class="fa fa-check mr-2" aria-hidden="true"></i>PAYMENT SUCCESSFUL!</h3>
                             </div>  
-                            <p class="mb-4" style="font-weight: 300;">Thank you for registering. Your booking has been confirmed successfully. Go ahead and check your email for details or <a href="/">Register A Collegue</a></p>
+                            <p class="mb-4" style="font-weight: 300;">Thank you for registering. Your booking has been confirmed successfully. Confirmation sent to your email address
+								@if (Session::exists('user')
+									"{{ Session::get('user')->email }}"
+								@endif
+								.<a href="/">Register A Collegue</a></p>
                             <a href="http://internationaldataweek.org/visa-and-travel-information" class="btn">Visa And Travel Information</a>
                     @else
                         <div class="input-box">

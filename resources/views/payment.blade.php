@@ -98,7 +98,7 @@
 								<label class="anim">
 									<input type="radio" name="payment_type" value="visa" class="payment_type checkbox" checked="">
 									<span><strong>VISA/MasterCard</strong></span>
-									<span>(Note: An handling fee of 3.2% will be charged)</span> 
+									<span>(Note: A payment handling fee of 3.2% will be charged)</span> 
 								</label>  
 								<div class="clear"> </div>
 							</div>  

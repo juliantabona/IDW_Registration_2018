@@ -24,12 +24,14 @@ Route::get('/', function () {
 Route::post('/register', function (Request $request) {
     //  If we have the email provided
     if (!empty($request->input('email'))) {
-        // Get the user from the database
+        // Does the user exist
         $userExists = User::where('email', $request->input('email'))->count();
 
         //  If the user exists
         if ($userExists) {
+            //  Get the user
             $user = User::where('email', $request->input('email'))->first();
+
             //  Find out if they have payed successfully before
             $hasTransactedBefore = $user->transactions->where('success_state', 1)->count();
 
@@ -39,9 +41,11 @@ Route::post('/register', function (Request $request) {
                 $request->session()->flash('alert', array('You have already registered and paid for this event! Visit your email to verify. Thank you', 'success'));
 
                 return back();
+
+                //  If they have not paid
             }
 
-            //  Go back and let the user know they have paid before
+            //  If the user does not exist
         } else {
             if ($request->input('abortRegistration') == '1') {
                 //  Notify the user
@@ -59,25 +63,25 @@ Route::post('/register', function (Request $request) {
             }
         }
 
-        if ($userExists) {
+        //  If we have the user
+        if ($user) {
+            //  Register a potential transaction
             $transaction = $user->transactions()->create([
                 'user_id' => $user->id,
             ]);
+
+            //  Hold the user and potential transaction session
             session(['user' => $user, 'transaction' => $transaction]);
         }
 
+        //  Go to payment page
         return redirect('/payment-options');
     } else {
         $request->session()->flash('alert', array('Please register!', 'danger'));
 
+        //  Go back to registration page
         return redirect('/');
     }
-
-    //Mail::to( $request->input('email_address'))->send(new EventRegistered($user));
-    //} else {
-        //$request->session()->flash('status','You have already Registered For this Event');
-        // return view('welcome');
-    //}
 });
 
 Route::get('/payment-options', function () {
@@ -94,13 +98,41 @@ Route::get('/paymentSuccessful', function () {
         'payment_type' => $payment_type,
         'package_type' => $package_type,
         'amount' => $amount,
-        'success_state' => 1,
+        'success_state' => 1,                       //  SUCCESSFUL
     ]);
 
+    if ($transaction) {
+        //  Get the user
+        $user = User::where('email', $transaction->user_id)->first();
+        //  Mail the user on payment success
+        Mail::to($request->input('email'))->send(new PaymentSuccess($user));
+    }
+
+    //  Go to payment success page
     return view('paymentSuccessful');
 });
 
 Route::get('/paymentUnSuccessful', function () {
+    $transaction_ID = Input::get('p2', false);    //  Transaction ID
+    $amount = Input::get('p6', false);            //  Amount
+    $payment_type = Input::get('p7', false);      //  Payment Type
+    $package_type = Input::get('p8', false);      //  Package Type
+
+    $transaction = Transaction::find($transaction_ID)->update([
+        'payment_type' => $payment_type,
+        'package_type' => $package_type,
+        'amount' => $amount,
+        'success_state' => 2,                       //  FAILED
+    ]);
+
+    if ($transaction) {
+        //  Get the user
+        $user = User::where('email', $transaction->user_id)->first();
+        //  Mail the user on payment success
+        Mail::to($request->input('email'))->send(new PaymentFail($user));
+    }
+
+    //  Go to payment success page
     return view('paymentUnSuccessful');
 });
 

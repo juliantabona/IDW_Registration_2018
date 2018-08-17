@@ -6,17 +6,15 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class EventRegistered extends Mailable
+class PaymentFail extends Mailable
 {
     use Queueable, SerializesModels;
-    public $user;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($user)
+    public function __construct()
     {
-        $this->user = $user;
     }
 
     /**
@@ -26,6 +24,6 @@ class EventRegistered extends Mailable
      */
     public function build()
     {
-        return $this->subject('Registration Confirmation')->view('registrationConfirmationEmail');
+        return $this->subject('Payment Unsuccessful')->view('paymentFailEmail');
     }
 }

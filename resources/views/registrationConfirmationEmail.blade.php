@@ -2,7 +2,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
-		<title>{{ $registration->first_name }}, - Registration Confirmation</title>
+		<title>{{ $user->first_name }}, - Registration Confirmation</title>
 	<link id="id2" rel="stylesheet" href="//fast.fonts.net/cssapi/e3b6f221-91c3-496d-85a5-e06a333f4d2d.css"><style type="text/css">@font-face { font-family: test; src: url('chrome-extension://dlpillepmpinmldcgomlekppgegbkkoc/AvenirLTStd-Heavy.otf'); }</style><link id="id2" rel="stylesheet" href="//fast.fonts.net/cssapi/e3b6f221-91c3-496d-85a5-e06a333f4d2d.css"><style type="text/css">@font-face { font-family: test; src: url('chrome-extension://dlpillepmpinmldcgomlekppgegbkkoc/AvenirLTStd-Heavy.otf'); }</style></head>
 	<body>
 		<!--[if mso]>
@@ -37,11 +37,11 @@
 															<h1 style="font-size: 30px;"> Thank You For Registering</h1>
 															
 															<p style="font-size: 17px;">
-																Reference No: {{ $registration->id }}
+																Reference No: {{ $user->id }}
 															</p>
 	
 															<p style="font-size: 17px;">
-															Dear {{ $registration->first_name }},
+															Dear {{ $user->first_name }},
 															</p> 
 															<p> 
 																Thank you for registering for International Data Week (IDW) 2018, which will take place on 5–8 November 2018 
@@ -84,17 +84,14 @@
 																
 															</p> 
 															<p>IDW 2018 Programme Committee</p>
-				<a href="https://idw2018.optimumqbw.com/payment-options" style="
-    text-decoration:  none;
-    padding: 10px;
-    color: #fff;
-    background: #e23500;
-    display: block;
-    width: 50%;
-    text-align: center;
-    margin: 40px 20%;
-">Proceed To Payment</a>
-	
+
+															<form action="https://idw2018.optimumqbw.com/register" method="POST">
+																{{ csrf_field() }}
+																<input class="hidden" name="email" value="{{ $user->email }}">
+																<input type="hidden" name="abortRegistration" value="1"> 
+																<button type="submit" class="btn" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">Proceed To Payment</button>
+															</form>
+
 															<table style="width: 100%;background: #e23500;">
 																<tbody>
 																	<tr>
