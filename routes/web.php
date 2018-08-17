@@ -87,6 +87,26 @@ Route::post('/register', function (Request $request) {
 });
 
 Route::get('/payment-options', function () {
+    if (Session::has('user')) {
+        //  Get the user
+        $user = User::where('email', Session::get('user')->email)->first();
+
+        //  Find out if they have payed successfully before
+        $hasTransactedBefore = $user->transactions->where('success_state', 1)->count();
+
+        //  If they have paid successfully before
+        if ($hasTransactedBefore != 0) {
+            //  Notify the user
+            $request->session()->flash('alert', array('You have already registered and paid for this event! Visit your email to verify or <a href="/resend/paymentConfirmation">resend payment confirmation email</a>. Thank you', 'success'));
+
+            return back();
+
+            //  If they have not paid
+        }
+
+        //  If the user does not exist
+    }
+
     return view('payment');
 });
 
@@ -168,8 +188,44 @@ Route::get('/paymentUnSuccessful', function (Request $request) {
     return redirect('/');
 });
 
-Route::get('/emailtemplate', function () {
-    return view('sendEmailTemplate');
+Route::get('/resend/paymentConfirmation', function () {
+    $user = Session::get('user');
+
+    if ($user) {
+        //  Get the user
+        $user = User::where('email', $user->email)->first();
+
+        //  Find out if they have payed successfully before
+        $hasTransactedBefore = $user->transactions->where('success_state', 1)->count();
+
+        //  If they have paid successfully before
+        if ($hasTransactedBefore != 0) {
+            //  Get the paid transaction
+            $transaction = Transaction::where('user_id', $user->id)->where('success_state', 1)->first();
+            //  If we have the user and transaction details
+            if ($user && $transaction) {
+                //  Send the email
+                Mail::to($user->email)->send(new PaymentSuccess($user, $transaction));
+            }
+
+            //  Notify the user
+            $request->session()->flash('alert', array('Payment confirmation email sent to "'.$user->email.'"</a>. Thank you', 'success'));
+
+            return back();
+
+        //  If they have not paid
+        } else {
+            $request->session()->flash('alert', array('You havent paid for this event using the email "'.$user->email.'"! Visit <a href="/payment-options">Payment Options</a> to pay for your seat', 'danger'));
+
+            return back();
+        }
+
+        //  If the user does not exist
+    }
+
+    $request->session()->flash('alert', array('You are not authorized to access this page!', 'danger'));
+
+    return redirect('/');
 });
 
 Route::get('/faq', function () {
