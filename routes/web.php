@@ -110,7 +110,7 @@ Route::get('/paymentSuccessful', function () {
             //  Get the user
             $user = User::where('email', $transaction->user_id)->first();
             //  Mail the user on payment success
-            Mail::to($request->input('email'))->send(new PaymentSuccess($user));
+            Mail::to($user->email)->send(new PaymentSuccess($user));
         }
     }
 
@@ -138,7 +138,7 @@ Route::get('/paymentUnSuccessful', function () {
             //  Get the user
             $user = User::where('email', $transaction->user_id)->first();
             //  Mail the user on payment success
-            Mail::to($request->input('email'))->send(new PaymentFail($user));
+            Mail::to($user->email)->send(new PaymentFail($user));
         }
     }
     //  Go to payment success page
