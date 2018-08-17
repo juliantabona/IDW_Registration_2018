@@ -19,7 +19,7 @@
 		<table width="100%" cellpadding="0" cellspacing="0" border="0" class="background_main" style="background-color: #ffffff; padding-top: 20px; color: #434245; width: 100%;">
 			<tbody>
 				<tr>
-					<td valign="top" class="sm_full_width" style="margin: 0 auto; width: 600px; display: block;">
+					<td valign="top" class="sm_full_width" style="margin: 0 auto; width: 100%; display: block;">
 						<div class="sm_no_padding" style="margin: 0 auto; padding: 30px 0 40px; display: block; box-sizing: border-box;">
 							<table style="width: 100%; color: #434245;" border="0" cellpadding="0" cellspacing="0">
 								<tbody>
@@ -44,7 +44,7 @@
 																Payment for your participation in International Data Week (IDW) 2018, was not successful. Please try again. 
                                                             </p>
                                                             <br>
-															<form action="https://idw2018.optimumqbw.com/register" method="POST">
+															<form action="https://idw2018.optimumqbw.com/payment-options" method="POST">
 																{{ csrf_field() }}
 																<input class="hidden" name="email" value="{{ $user->email }}">
 																<input type="hidden" name="abortRegistration" value="1"> 
