@@ -707,19 +707,8 @@ border-top: 1px solid #d4d4d4;
 						<button type="submit" class="btn btn-half btn-next">Proceed To Payment</button>
 					</div> 
 				</form>
-			</div>			</div>
-		<ul class="w3lsg-bubbles">
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
+			</div>			
+		</div>
 	</div>	 
 	<!-- copyright -->
 	<div class="w3copyright-agile">

@@ -141,18 +141,6 @@
 
 			</div>	
 		</div>
-		<ul class="w3lsg-bubbles">
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
-		</ul>
 	</div>	 
 	<!-- copyright -->
 	<div class="w3copyright-agile">
