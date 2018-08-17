@@ -106,13 +106,13 @@ Route::get('/paymentSuccessful', function () {
     if ($transaction_state) {
         $transaction = Transaction::find($transaction_ID);
 
-        return $transaction;
         if ($transaction) {
             //  Get the user
-            $user = User::where('email', $transaction->user_id)->first();
-            //  Mail the user on payment success
-            return $user;
-            Mail::to($user->email)->send(new PaymentSuccess($user));
+            $user = User::where('id', $transaction->user_id)->first();
+            if ($user) {
+                //  Mail the user on payment success
+                Mail::to($user->email)->send(new PaymentSuccess($user));
+            }
         }
     }
 
