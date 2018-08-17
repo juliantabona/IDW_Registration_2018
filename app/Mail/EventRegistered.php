@@ -27,7 +27,7 @@ class EventRegistered extends Mailable
     public function build()
     {
         return $this->subject('Registration Confirmation')
-                    ->attach('pdf/Bank_Transfer_Details.pdf')
+                    ->attach(public_path('/pdf/Bank_Transfer_Details.pdf'))
                     ->view('email.registrationConfirmationEmail');
     }
 }
