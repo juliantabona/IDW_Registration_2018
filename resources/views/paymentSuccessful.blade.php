@@ -58,7 +58,7 @@
                                 <h3><i class="fa fa-check mr-2" aria-hidden="true"></i>PAYMENT SUCCESSFUL!</h3>
                             </div>  
                             <p class="mb-4" style="font-weight: 300;">Thank you for registering. Your booking has been confirmed successfully. Confirmation sent to your email address
-								@if (Session::exists('user')
+								@if (Session::exists('user') )
 									"{{ Session::get('user')->email }}"
 								@endif
 								.<a href="/">Register A Collegue</a></p>
