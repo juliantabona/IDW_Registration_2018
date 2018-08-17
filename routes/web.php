@@ -124,6 +124,8 @@ Route::get('/paymentSuccessful', function () {
         }
     }
 
+    $request->session()->flash('alert', array('You are not authorized to access this page!', 'danger'));
+
     return redirect('/');
 });
 
@@ -132,29 +134,38 @@ Route::get('/paymentUnSuccessful', function () {
     $amount = Input::get('p6', false);            //  Amount
     $payment_type = Input::get('p7', false);      //  Payment Type
     $package_type = Input::get('p8', false);      //  Package Type
-    $transaction = Transaction::find($transaction_ID);
 
-    if ($transaction->success_state != 2) {
-        $transaction_state = $transaction->update([
-            'payment_type' => $payment_type,
-            'package_type' => $package_type,
-            'amount' => $amount,
-            'success_state' => 2,                       //  SUCCESSFUL
-        ]);
+    if (!empty($transaction_ID)) {
+        $transaction = Transaction::find($transaction_ID);
+        if (!empty($transaction)) {
+            if ($transaction->success_state != 2) {
+                $transaction_state = $transaction->update([
+                    'payment_type' => $payment_type,
+                    'package_type' => $package_type,
+                    'amount' => $amount,
+                    'success_state' => 2,                       //  FAIL
+                ]);
 
-        if ($transaction_state) {
-            $transaction = Transaction::find($transaction_ID);
+                if ($transaction_state) {
+                    if ($transaction) {
+                        //  Get the user
+                        $user = User::where('id', $transaction->user_id)->first();
+                        if ($user) {
+                            //  Mail the user on payment success
+                            Mail::to($user->email)->send(new PaymentFail($user, $transaction));
 
-            if ($transaction) {
-                //  Get the user
-                $user = User::where('email', $transaction->user_id)->first();
-                //  Mail the user on payment success
-                Mail::to($user->email)->send(new PaymentFail($user, $transaction));
+                            //  Go to payment success page
+                            return view('paymentUnSuccessful');
+                        }
+                    }
+                }
             }
         }
     }
-    //  Go to payment success page
-    return view('paymentUnSuccessful');
+
+    $request->session()->flash('alert', array('You are not authorized to access this page!', 'danger'));
+
+    return redirect('/');
 });
 
 Route::get('/emailtemplate', function () {
