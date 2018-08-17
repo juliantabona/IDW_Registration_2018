@@ -37,7 +37,7 @@
 															<h1 style="font-size: 30px;"> Thank You For Registering</h1>
 															
 															<p style="font-size: 17px;">
-																Reference No: {{ $user->id }}
+																Delegate No: {{ $user->id }}
 															</p>
 	
 															<p style="font-size: 17px;">

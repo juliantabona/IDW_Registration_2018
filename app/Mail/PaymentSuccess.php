@@ -10,13 +10,15 @@ class PaymentSuccess extends Mailable
 {
     use Queueable, SerializesModels;
     public $user;
+    public $transaction;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($user)
+    public function __construct($user, $transaction)
     {
         $this->user = $user;
+        $this->transaction = $transaction;
     }
 
     /**

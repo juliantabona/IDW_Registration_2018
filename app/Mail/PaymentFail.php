@@ -9,12 +9,16 @@ use Illuminate\Queue\SerializesModels;
 class PaymentFail extends Mailable
 {
     use Queueable, SerializesModels;
+    public $user;
+    public $transaction;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($user, $transaction)
     {
+        $this->user = $user;
+        $this->transaction = $transaction;
     }
 
     /**

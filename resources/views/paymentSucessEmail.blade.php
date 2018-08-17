@@ -31,7 +31,12 @@
 														<td>
 															<img src="https://idw2018.optimumqbw.com/images/sponsors.png" style="background: #e23500;border-bottom: 5px solid #e23500;">
 															<h1 style="font-size: 30px;"> PAYMENT CONFIRMATION</h1>
-	
+															<br>
+															<p style="font-size: 17px;">
+																Delegate No: {{ $user->id }}
+																Transaction No: {{ $transaction->id }}
+															</p>
+															<br>
 															<p style="font-size: 17px;">
 															    Dear {{ $user->first_name }},
 															</p> 
