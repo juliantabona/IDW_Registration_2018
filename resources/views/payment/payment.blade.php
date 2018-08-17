@@ -96,7 +96,7 @@
 						<div class="input-box">
 							<div class="wthree-text mb-3">  
 								<label class="anim">
-									<input type="radio" name="payment_type" value="visa" class="payment_type checkbox" checked="">
+									<input type="radio" name="payment_type" value="Online Transfer" class="payment_type checkbox" checked="">
 									<span><strong>VISA/MasterCard</strong></span>
 									<span>(Note: A payment handling fee of 3.2% will be charged)</span> 
 								</label>  
