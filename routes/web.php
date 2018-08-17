@@ -90,7 +90,7 @@ Route::get('/payment-options', function () {
     return view('payment');
 });
 
-Route::get('/paymentSuccessful', function () {
+Route::get('/paymentSuccessful', function (Request $request) {
     $transaction_ID = Input::get('p2', false);    //  Transaction ID
     $amount = Input::get('p6', false);            //  Amount
     $payment_type = Input::get('p7', false);      //  Payment Type
@@ -129,7 +129,7 @@ Route::get('/paymentSuccessful', function () {
     return redirect('/');
 });
 
-Route::get('/paymentUnSuccessful', function () {
+Route::get('/paymentUnSuccessful', function (Request $request) {
     $transaction_ID = Input::get('p2', false);    //  Transaction ID
     $amount = Input::get('p6', false);            //  Amount
     $payment_type = Input::get('p7', false);      //  Payment Type
