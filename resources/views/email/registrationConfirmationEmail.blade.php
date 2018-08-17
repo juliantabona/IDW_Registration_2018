@@ -47,7 +47,7 @@
 																Thank you for registering for International Data Week (IDW) 2018, which will take place on 5–8 November 2018 
 																 in Gaborone, Botswana. We herewith confirm receipt of your registration.  
 																 Your participation in IDW 2018 will be confirmed in a separate email upon receipt of payment. 
-																To pay by bank transfer, all the necessary information is given below. 
+																To pay by bank transfer, all the necessary information is atttached below. 
 																 Please note that payment must be received within 15 days of registration.
 															</p>
 													

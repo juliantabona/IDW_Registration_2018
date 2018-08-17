@@ -171,6 +171,7 @@
 		$(document).ready(function(){
 
 			$(document).on("click",".pay_now",function(e){
+				var payment_type = $('.payment_type:checked').val();
 				var terms_and_conditions = $('.terms_and_conditions:checked');
 				var err_count = 0;
 
@@ -184,6 +185,11 @@
 				
 				if(err_count != 0){
 					alert('Complete all fields before proceeding');
+				}else{
+					if(payment_type == 'Bank Transfer'){
+						e.preventDefault();
+						window.location = 'pdf/Bank_Transfer_Details.pdf';
+					}
 				}
 
 				$('.main-registration-container').animate({
@@ -191,15 +197,6 @@
 				}, 500);
 			});
 
-            $(".pay_now").click(function (e) {
-                var payment_type = $('.payment_type:checked').val();
-
-                if(payment_type == 'Bank Transfer'){
-                    e.preventDefault();
-                    window.location = 'pdf/Bank_Transfer_Details.pdf';
-                }
-			});
-			
 			function errMsg(msg){
 				return '<p class="errMsg"><i class="fa fa-exclamation-circle mr-2"></i>'+msg+'</p>';
 			}
