@@ -61,7 +61,7 @@
 								@if (Session::exists('user') )
 									"{{ Session::get('user')->email }}"
 								@endif
-								.<a href="/">Register A Collegue</a></p>
+								.<br><a href="/">Register A Collegue</a></p>
                             <a href="http://internationaldataweek.org/visa-and-travel-information" class="btn">Visa And Travel Information</a>
                     @else
                         <div class="input-box">
