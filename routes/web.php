@@ -87,10 +87,19 @@ Route::post('/register', function (Request $request) {
 });
 
 Route::get('/payment-options', function (Request $request) {
-    if (Session::has('user')) {
-        //  Get the user
-        $user = User::where('email', Session::get('user')->email)->first();
+    $user = null;
 
+    if (Session::has('user')) {
+        $user = Session::get('user');
+    } else {
+        $userEmail = Input::get('email', false);
+        if (!empty($userEmail)) {
+            //  Get the user
+            $user = User::where('email', $userEmail)->first();
+        }
+    }
+
+    if (!empty($user)) {
         //  Find out if they have payed successfully before
         $hasTransactedBefore = $user->transactions->where('success_state', 1)->count();
 
@@ -100,11 +109,7 @@ Route::get('/payment-options', function (Request $request) {
             $request->session()->flash('alert', array('You have already registered and paid for this event using your "'.$user->email.'" email! Visit your email to verify or <a href="/resend/paymentConfirmation">resend payment confirmation email</a>. Thank you', 'success'));
 
             return redirect('/');
-
-            //  If they have not paid
         }
-
-        //  If the user does not exist
     }
 
     return view('payment');
