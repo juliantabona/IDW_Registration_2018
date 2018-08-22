@@ -55,7 +55,7 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'no-reply@idw2018.optimumqbw.com'),
+        'address' => env('MAIL_FROM_ADDRESS', 'noreply@internationaldataweek.org'),
         'name' => env('MAIL_FROM_NAME', 'International Data Week 2018'),
     ],
 

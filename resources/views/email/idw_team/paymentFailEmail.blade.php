@@ -6,6 +6,7 @@
 		<title>{{ $user->first_name }}, - Payment Confirmation</title>
 	<link id="id2" rel="stylesheet" href="//fast.fonts.net/cssapi/e3b6f221-91c3-496d-85a5-e06a333f4d2d.css"><style type="text/css">@font-face { font-family: test; src: url('chrome-extension://dlpillepmpinmldcgomlekppgegbkkoc/AvenirLTStd-Heavy.otf'); }</style><link id="id2" rel="stylesheet" href="//fast.fonts.net/cssapi/e3b6f221-91c3-496d-85a5-e06a333f4d2d.css"><style type="text/css">@font-face { font-family: test; src: url('chrome-extension://dlpillepmpinmldcgomlekppgegbkkoc/AvenirLTStd-Heavy.otf'); }</style></head>
 	<body>
+        
 		<!--[if mso]>
 			<style type="text/css">
 				
@@ -30,40 +31,27 @@
 													<tr>
 														<td>
 															<img src="https://idw2018.optimumqbw.com/images/sponsors.png" style="background: #e23500;border-bottom: 5px solid #e23500;">
-															<h1 style="font-size: 30px;"> PAYMENT CONFIRMATION</h1>
+															<h1 style="font-size: 30px;">PAYMENT UNSUCCESSFUL</h1>
 															<br>
 															<p style="font-size: 17px;">
 																Delegate No: {{ $user->id }}
-																Transaction No: IDW-2018-{{ $transaction->id }}
+																Transaction No: {{ $transaction->id }}
 															</p>
 															<br>
 															<p style="font-size: 17px;">
 															    Dear {{ $user->first_name }},
 															</p> 
 															<p> 
-																Thank you for your payment. We herewith confirm your participation in International Data Week (IDW) 2018, which will take place on 5–8 November 2018 in Gaborone, Botswana. 
-															</p>
-													
-															<ul> 
-                                                                <li>To view the programme, including details on breakout and poster sessions, please visit www.internationaldataweek.org/programme.</li>
+																Payment for your participation in International Data Week (IDW) 2018, was not successful. Please try again. 
+                                                            </p>
+                                                            <br>
+															<form action="https://idw2018.optimumqbw.com/payment-options" method="POST">
+																{{ csrf_field() }}
+																<input type="hidden" class="hidden" name="email" value="{{ $user->email }}">
+																<input type="hidden" name="abortRegistration" value="1"> 
+																<button type="submit" class="btn" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">Proceed To Payment</button>
+															</form>
 
-
-                                                                <li>For information on logistics, including lodging options, please visit: www.internationaldataweek.org/venue-accommodation-logistics.</li>
-                                                                
-                                                                
-                                                                <li>For transportation details and visa requirements, please visit: www.internationaldataweek.org/visa-and-travel-information.</li>
-                                                                
-                                                                <li>For Botswana Tourism information, please visit the Botswana Tourism official site: http://www.botswanatourism.co.bw/
-                                                                    <br/>As well as, the Hospitality and Tourism Association of Botswana official site: http://www.this-is-botswana.com/
-                                                                    <br/>Please also see the Lonely Planet entry for Botswana: https://www.lonelyplanet.com/botswana
-                                                                </li>
-															</ul> 
-															<p> 
-																If you would like to make any changes to your registration at a later stage, please contact the organizers of IDW 2018 at registrations@internationaldataweek.org. Please take note of the Cancellation & Refund Policy stated in the Terms & Conditions.
-															</p> 
-															<p> 
-																We look forward to seeing you in Botswana!
-															</p> 
 															<p> 
                                                                 Best regards,<br>
                                                                 IDW 2018 Programme Committee                                                                    

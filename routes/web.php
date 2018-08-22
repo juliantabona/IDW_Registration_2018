@@ -14,9 +14,14 @@
 use App\Transaction;
 use App\User;
 use Illuminate\Http\Request;
+//  Emails to send to user
 use App\Mail\PaymentFail;
 use App\Mail\PaymentSuccess;
 use App\Mail\EventRegistered;
+//  Emails to send to IDW team
+use App\Mail\IDWPaymentFail;
+use App\Mail\IDWPaymentSuccess;
+use App\Mail\IDWEventRegistered;
 use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
@@ -57,8 +62,10 @@ Route::post('/register', function (Request $request) {
             } else {
                 //  Create a new user
                 $user = User::create($request->all());
-
+                //  Send email to the user
                 Mail::to($request->input('email'))->send(new EventRegistered($user));
+                //  Send email to the IDW Team
+                Mail::to('julian@optimumqbw.com')->send(new IDWEventRegistered($user));
 
                 //Alert update success
                 $request->session()->flash('alert', array('You have been registered successfully! Complete your application by paying for your seat', 'success'));
@@ -140,6 +147,8 @@ Route::get('/paymentSuccessful', function (Request $request) {
                             //  Mail the user on payment success
                             Mail::to($user->email)->send(new PaymentSuccess($user, $transaction));
 
+                            //  Send email to the IDW Team
+                            Mail::to('julian@optimumqbw.com')->send(new IDWPaymentSuccess($user));
                             //  Go to payment success page
                             return view('payment/paymentSuccessful');
                         }
@@ -178,6 +187,9 @@ Route::get('/paymentUnSuccessful', function (Request $request) {
                         if ($user) {
                             //  Mail the user on payment success
                             Mail::to($user->email)->send(new PaymentFail($user, $transaction));
+
+                            //  Send email to the IDW Team
+                            Mail::to('julian@optimumqbw.com')->send(new IDWPaymentFail($user));
 
                             //  Go to payment success page
                             return view('payment/paymentUnSuccessful');
