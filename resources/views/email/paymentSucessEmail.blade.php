@@ -39,7 +39,7 @@
 															<p style="font-size: 20px;">
 																<strong>Payment Details:</strong>
 															</p>
-															<ul>
+															<ul style=" background: #e2ffe1; padding: 15px;">
 																<li>Card Type: {{ Request::get('p7') }}</li>
 																
 																<li>Card Number: {{ Request::get('MaskedCardNumber') }}</li>

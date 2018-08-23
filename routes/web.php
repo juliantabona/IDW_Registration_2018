@@ -62,6 +62,19 @@ Route::post('/register', function (Request $request) {
 
                 return back();
             } else {
+                //  If the user specified a custom organisation type then use it instead
+                if (!empty($request->input('organisation_type_other'))) {
+                    $request->merge([
+                            'organisation_type' => $request->input('organisation_type_other'),
+                        ]);
+                }
+                //  If the user specified a custom communication channel then use it instead
+                if (!empty($request->input('communication_channel_other'))) {
+                    $request->merge([
+                            'communication_channel' => $request->input('communication_channel_other'),
+                        ]);
+                }
+
                 //  Create a new user
                 $user = User::create($request->all());
                 //  Send email to the user
