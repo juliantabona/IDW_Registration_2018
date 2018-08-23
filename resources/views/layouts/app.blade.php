@@ -20,7 +20,7 @@
             
         @include('layouts.menu.default-menu')
         @include('layouts.alert.default-alert')
-        {!! Session::get('alert')[0] !!}
+        
         @yield('content')
         
         @include('layouts.footer.default-footer')

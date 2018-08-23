@@ -45,12 +45,7 @@
 																Payment for your participation in International Data Week (IDW) 2018, was not successful. Please try again. 
                                                             </p>
                                                             <br>
-															<form action="{{ URL::to('/') }}/payment-options" method="POST">
-																{{ csrf_field() }}
-																<input type="hidden" class="hidden" name="email" value="{{ $user->email }}">
-																<input type="hidden" name="abortRegistration" value="1"> 
-																<button type="submit" class="btn" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">Proceed To Payment</button>
-															</form>
+															<a href="{{ URL::to('/') }}/payment-options?email={{ $user->email }}" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">Proceed To Payment</a>
 
 															<p> 
                                                                 Best regards,<br>

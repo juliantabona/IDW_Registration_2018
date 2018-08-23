@@ -36,43 +36,109 @@
 																Delegate No: {{ $user->id }}
 																Transaction No: {{ $transaction->id }}
 															</p>
-															<br>
-															<p style="font-size: 17px;">
-															    Dear {{ $user->first_name }},
-															</p> 
-															<p> 
-																Thank you for your payment. We herewith confirm your participation in International Data Week (IDW) 2018, which will take place on 5–8 November 2018 in Gaborone, Botswana. 
-															</p>
-													
-															<ul> 
-                                                                <li>To view the programme, including details on breakout and poster sessions, please visit www.internationaldataweek.org/programme.</li>
-
-
-                                                                <li>For information on logistics, including lodging options, please visit: www.internationaldataweek.org/venue-accommodation-logistics.</li>
-                                                                
-                                                                
-                                                                <li>For transportation details and visa requirements, please visit: www.internationaldataweek.org/visa-and-travel-information.</li>
-                                                                
-                                                                <li>For Botswana Tourism information, please visit the Botswana Tourism official site: http://www.botswanatourism.co.bw/
-                                                                    <br/>As well as, the Hospitality and Tourism Association of Botswana official site: http://www.this-is-botswana.com/
-                                                                    <br/>Please also see the Lonely Planet entry for Botswana: https://www.lonelyplanet.com/botswana
-                                                                </li>
-															</ul> 
-															<p> 
-																If you would like to make any changes to your registration at a later stage, please contact the organizers of IDW 2018 at registrations@internationaldataweek.org. Please take note of the Cancellation & Refund Policy stated in the Terms & Conditions.
-															</p> 
-															<p> 
-																We look forward to seeing you in Botswana!
-															</p> 
-															<p> 
-                                                                Best regards,<br>
-                                                                IDW 2018 Programme Committee                                                                    
-															</p> 
-                                                            <p>
-                                                                Support Email: 
-                                                                <a href="info@optimumqbw.com" target="_top">info@optimumqbw.com</a>
-                                                            </p>	
-                                                            <img src="{{ URL::to('/') }}/images/sponsors.png" style="background: #e23500;border-bottom: 5px solid #e23500;">												
+															
+															<p style="font-size: 20px;">
+																	DELEGATE DETAILS
+																</p> 
+																<p> 
+																	<b>Delegate general details are as follows:</b>
+																</p>
+														
+																<ul> 
+																	<li> 
+																		<b>First Name: </b> {{ $user->first_name }}
+																	</li>
+																	<li> 
+																		<b>Last Name: </b> {{ $user->last_name }}
+																	</li>
+																	<li> 
+																		<b>Gender: </b> {{ $user->gender }}
+																	</li> 
+																	<li> 
+																		<b>Affiliation: </b> {{ $user->affiliation }}
+																	</li>
+																	<li> 
+																		<b>Position/Title: </b> {{ $user->position }}
+																	</li>
+																	<li> 
+																		<b>Country: </b> {{ $user->country }}
+																	</li>
+																	<li> 
+																		<b>Organisation Type: </b> {{ $user->organisation_type }}
+																	</li>
+																	<li> 
+																		<b>Address: </b> {{ $user->address }}
+																	</li>
+																	<li> 
+																		<b>Address 2: </b> {{ $user->address_2 }}
+																	</li>
+																	<li> 
+																		<b>City: </b> {{ $user->city }}
+																	</li>
+																	<li> 
+																		<b>State: </b> {{ $user->state }}
+																	</li>
+																	<li> 
+																		<b>ZipCode: </b> {{ $user->zip_code }}
+																	</li>
+																</ul>
+																<p> 
+																	<b>Contact details are as follows:</b>
+																</p>
+																<ul>
+																	<li> 
+																		<b>Phone: </b> {{ $user->phone }}
+																	</li>
+																	<li> 
+																		<b>Email: </b> {{ $user->email }}
+																	</li>
+																	<li> 
+																		<b>Additional_email: </b> {{ $user->additional_email }}
+																	</li>
+																	<li> 
+																		<b>Twitter Handle: </b> {{ $user->twitter_handle }}
+																	</li>
+																</ul>
+																<p> 
+																	<b>Event specific details:</b>
+																</p>
+																<ul>
+																	<li> 
+																		<b>Days Attending: </b> {{ $user->days_attending }}
+																	</li>
+																	<li> 
+																		<b>Event Attending: </b> {{ $user->event_attending }}
+																	</li>
+																</ul>
+																<p> 
+																	<b>Other details:</b>
+																</p>
+																<ul>
+																	<li> 
+																		<b>Organisation Affiliation: </b> {{ $user->organisation_affiliation }}
+																	</li>
+																	<li> 
+																		<b>Communication Channel: </b> {{ $user->communication_channel }}
+																	</li>
+																	<li> 
+																		<b>Accessibility: </b> {{ $user->accessibility }}
+																	</li>
+																	<li> 
+																		<b>Allergies: </b> {{ $user->allergies }}
+																	</li>
+																	<li> 
+																		<b>Send Future Updates: </b> {{ $user->send_future_updates }}
+																	</li>
+																	<li> 
+																		<b>Send Data Science Journal Updates: </b> {{ $user->send_data_science_journal_updates }}
+																	</li>
+																	<li> 
+																		<b>Agree To Addon List: </b> {{ $user->agree_to_addon_list }}
+																	</li>
+																	<li> 
+																		<b>Agree To Details On List: </b> {{ $user->agree_to_details_on_list }}
+																	</li>
+																</ul> 												
 														</td>
 													</tr>
 												</tbody>

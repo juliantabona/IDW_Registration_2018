@@ -31,36 +31,115 @@
 													<tr>
 														<td>
 															<img src="{{ URL::to('/') }}/images/sponsors.png" style="background: #e23500;border-bottom: 5px solid #e23500;">
-															<h1 style="font-size: 30px;">PAYMENT UNSUCCESSFUL</h1>
+															<h1 style="font-size: 30px;"> PAYMENT FAIL</h1>
 															<br>
 															<p style="font-size: 17px;">
 																Delegate No: {{ $user->id }}
 																Transaction No: {{ $transaction->id }}
 															</p>
-															<br>
-															<p style="font-size: 17px;">
-															    Dear {{ $user->first_name }},
-															</p> 
-															<p> 
-																Payment for your participation in International Data Week (IDW) 2018, was not successful. Please try again. 
-                                                            </p>
-                                                            <br>
-															<form action="{{ URL::to('/') }}/payment-options" method="POST">
-																{{ csrf_field() }}
-																<input type="hidden" class="hidden" name="email" value="{{ $user->email }}">
-																<input type="hidden" name="abortRegistration" value="1"> 
-																<button type="submit" class="btn" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">Proceed To Payment</button>
-															</form>
-
-															<p> 
-                                                                Best regards,<br>
-                                                                IDW 2018 Programme Committee                                                                    
-															</p> 
-                                                            <p>
-                                                                Support Email: 
-                                                                <a href="info@optimumqbw.com" target="_top">info@optimumqbw.com</a>
-                                                            </p>	
-                                                            <img src="{{ URL::to('/') }}/images/sponsors.png" style="background: #e23500;border-bottom: 5px solid #e23500;">												
+															
+															<p style="font-size: 20px;">
+																	DELEGATE DETAILS
+																</p> 
+																<p> 
+																	<b>Delegate general details are as follows:</b>
+																</p>
+														
+																<ul> 
+																	<li> 
+																		<b>First Name: </b> {{ $user->first_name }}
+																	</li>
+																	<li> 
+																		<b>Last Name: </b> {{ $user->last_name }}
+																	</li>
+																	<li> 
+																		<b>Gender: </b> {{ $user->gender }}
+																	</li> 
+																	<li> 
+																		<b>Affiliation: </b> {{ $user->affiliation }}
+																	</li>
+																	<li> 
+																		<b>Position/Title: </b> {{ $user->position }}
+																	</li>
+																	<li> 
+																		<b>Country: </b> {{ $user->country }}
+																	</li>
+																	<li> 
+																		<b>Organisation Type: </b> {{ $user->organisation_type }}
+																	</li>
+																	<li> 
+																		<b>Address: </b> {{ $user->address }}
+																	</li>
+																	<li> 
+																		<b>Address 2: </b> {{ $user->address_2 }}
+																	</li>
+																	<li> 
+																		<b>City: </b> {{ $user->city }}
+																	</li>
+																	<li> 
+																		<b>State: </b> {{ $user->state }}
+																	</li>
+																	<li> 
+																		<b>ZipCode: </b> {{ $user->zip_code }}
+																	</li>
+																</ul>
+																<p> 
+																	<b>Contact details are as follows:</b>
+																</p>
+																<ul>
+																	<li> 
+																		<b>Phone: </b> {{ $user->phone }}
+																	</li>
+																	<li> 
+																		<b>Email: </b> {{ $user->email }}
+																	</li>
+																	<li> 
+																		<b>Additional_email: </b> {{ $user->additional_email }}
+																	</li>
+																	<li> 
+																		<b>Twitter Handle: </b> {{ $user->twitter_handle }}
+																	</li>
+																</ul>
+																<p> 
+																	<b>Event specific details:</b>
+																</p>
+																<ul>
+																	<li> 
+																		<b>Days Attending: </b> {{ $user->days_attending }}
+																	</li>
+																	<li> 
+																		<b>Event Attending: </b> {{ $user->event_attending }}
+																	</li>
+																</ul>
+																<p> 
+																	<b>Other details:</b>
+																</p>
+																<ul>
+																	<li> 
+																		<b>Organisation Affiliation: </b> {{ $user->organisation_affiliation }}
+																	</li>
+																	<li> 
+																		<b>Communication Channel: </b> {{ $user->communication_channel }}
+																	</li>
+																	<li> 
+																		<b>Accessibility: </b> {{ $user->accessibility }}
+																	</li>
+																	<li> 
+																		<b>Allergies: </b> {{ $user->allergies }}
+																	</li>
+																	<li> 
+																		<b>Send Future Updates: </b> {{ $user->send_future_updates }}
+																	</li>
+																	<li> 
+																		<b>Send Data Science Journal Updates: </b> {{ $user->send_data_science_journal_updates }}
+																	</li>
+																	<li> 
+																		<b>Agree To Addon List: </b> {{ $user->agree_to_addon_list }}
+																	</li>
+																	<li> 
+																		<b>Agree To Details On List: </b> {{ $user->agree_to_details_on_list }}
+																	</li>
+																</ul> 											
 														</td>
 													</tr>
 												</tbody>
