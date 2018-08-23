@@ -288,7 +288,7 @@
 
                             <div class="wthree-text">
                                 <label class="anim">
-                                    <input type="radio" name="organisation_type" value="Press and Media"></input>
+                                    <input type="radio" name="organisation_type" value="Press and Media" class="organisation_type checkbox" ></input>
                                     <span>Press &amp; Media</span>
                                 </label>
                                 <div class="clear"></div>
