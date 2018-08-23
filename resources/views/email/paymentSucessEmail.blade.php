@@ -40,23 +40,21 @@
 																<strong>Payment Details:</strong>
 															</p>
 															<ul>
-																<li>Card Type: {{ $payment_type }}</li>
+																<li>Card Type: {{ Request::get('p7') }}</li>
 																
-																<li>Card Number: {{ $MaskedCardNumber }}</li>
+																<li>Card Number: {{ Request::get('MaskedCardNumber') }}</li>
 												
-																<li>Cardholder Name: {{ $card_name }}</li>
+																<li>Cardholder Name: {{ Request::get('p5') }}</li>
 										
 																<li>Email Address: {{ $user->email }}</li>
 								
-																<li>Merchandise: {{ $package_type }}</li>
+																<li>Merchandise: {{ Request::get('p8') }}</li>
 																
-																<li>Amount: BWP {{ $amount }}</li>
+																<li>Amount: BWP {{ Request::get('p6') }}</li>
 														
-																<li>Reference: {{ $transaction_ID }}</li>
-												
-																<li>Transaction RRN: N/A</li>
+																<li>Reference: {{ $transaction->id }}</li>
 										
-																<li>Transaction Date: {{ $transactionDate }}</li>
+																<li>Transaction Date: {{ Request::get('TimeResponseSentToRequestor') }}</li>
 															</ul>
 															<br>
 															<p style="font-size: 17px;">

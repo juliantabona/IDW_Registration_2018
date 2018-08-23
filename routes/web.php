@@ -155,10 +155,7 @@ Route::get('/paymentSuccessful', function (Request $request) {
                             //  Send email to the IDW Team
                             Mail::to('julian@optimumqbw.com')->send(new IDWPaymentSuccess($user, $transaction));
                             //  Go to payment success page
-                            return view('payment/paymentSuccessful', compact(
-                                'user', 'transaction_ID', 'amount', 'payment_type', 'package_type', 'card_type',
-                                'MaskedCardNumber', 'transactionDate'
-                            ));
+                            return view('payment/paymentSuccessful');
                         }
                     }
                 }
