@@ -34,9 +34,9 @@
 															<br>
 															<p style="font-size: 17px;">
 																Delegate No: {{ $user->id }}
-																Transaction No: {{ $transaction->id }}
+																Transaction No: IDW-2018-{{ $transaction->id }}
 															</p>
-															
+														
 															<p style="font-size: 20px;">
 																	DELEGATE DETAILS
 																</p> 

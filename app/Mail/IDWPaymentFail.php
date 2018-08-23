@@ -28,7 +28,7 @@ class IDWPaymentFail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Payment Confirmation For '.$this->user->first_name.' '.$this->user->last_name)
+        return $this->subject('Payment Unsuccessful For '.$this->user->first_name.' '.$this->user->last_name)
                     ->view('email.idw_team.paymentFailEmail');
     }
 }
