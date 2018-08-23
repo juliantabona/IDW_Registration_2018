@@ -150,7 +150,7 @@ Route::get('/paymentSuccessful', function (Request $request) {
                             Mail::to($user->email)->send(new PaymentSuccess($user, $transaction));
 
                             //  Send email to the IDW Team
-                            Mail::to('julian@optimumqbw.com')->send(new IDWPaymentSuccess($user));
+                            Mail::to('julian@optimumqbw.com')->send(new IDWPaymentSuccess($user, $transaction));
                             //  Go to payment success page
                             return view('payment/paymentSuccessful');
                         }
@@ -191,7 +191,7 @@ Route::get('/paymentUnSuccessful', function (Request $request) {
                             Mail::to($user->email)->send(new PaymentFail($user, $transaction));
 
                             //  Send email to the IDW Team
-                            Mail::to('julian@optimumqbw.com')->send(new IDWPaymentFail($user));
+                            Mail::to('julian@optimumqbw.com')->send(new IDWPaymentFail($user, $transaction));
 
                             //  Go to payment success page
                             return view('payment/paymentUnSuccessful');

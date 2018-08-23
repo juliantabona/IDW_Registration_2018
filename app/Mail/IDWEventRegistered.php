@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class IDWRegisteration extends Mailable
+class IDWEventRegistered extends Mailable
 {
     use Queueable, SerializesModels;
     public $user;
@@ -26,8 +26,7 @@ class IDWRegisteration extends Mailable
      */
     public function build()
     {
-        return $this->subject('Registration Confirmation')
-                    ->attach(public_path('/pdf/Bank_Transfer_Details.pdf'))
+        return $this->subject('Registration Confirmation For '.$user->first_name.' '.$user->last_name)
                     ->view('email.idw_team.registrationConfirmationEmail');
     }
 }

@@ -5,20 +5,20 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class IDWPaymentSuccess extends Mailable
 {
     use Queueable, SerializesModels;
+    public $user;
+    public $transaction;
 
     /**
      * Create a new message instance.
-     *
-     * @return void
      */
-    public function __construct()
+    public function __construct($user, $transaction)
     {
-        //
+        $this->user = $user;
+        $this->transaction = $transaction;
     }
 
     /**
@@ -28,6 +28,7 @@ class IDWPaymentSuccess extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject('Payment Confirmation For '.$user->first_name.' '.$user->last_name)
+                    ->view('email.idw_team.paymentSucessEmail');
     }
 }
