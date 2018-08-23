@@ -127,8 +127,11 @@ Route::get('/payment-options', function (Request $request) {
 Route::get('/paymentSuccessful', function (Request $request) {
     $transaction_ID = Input::get('p2', false);    //  Transaction ID
     $amount = Input::get('p6', false);            //  Amount
-    $payment_type = Input::get('p7', false);      //  Payment Type
-    $package_type = Input::get('p8', false);      //  Package Type
+    $payment_type = Input::get('p7', false);      //  Card Type e.g Visa
+    $package_type = Input::get('p8', false);      //  Package Type e.g Early Ticket
+    $card_name = Input::get('p5', false);         //  Card Name, e.g Visa Test Card 001
+    $MaskedCardNumber = Input::get('MaskedCardNumber', false);                 //  Masked Card Number, e.g Visa Test Card 001
+    $transactionDate = Input::get('TimeResponseSentToRequestor', false);       //  Transaction date
 
     if (!empty($transaction_ID)) {
         $transaction = Transaction::find($transaction_ID);
@@ -152,7 +155,10 @@ Route::get('/paymentSuccessful', function (Request $request) {
                             //  Send email to the IDW Team
                             Mail::to('julian@optimumqbw.com')->send(new IDWPaymentSuccess($user, $transaction));
                             //  Go to payment success page
-                            return view('payment/paymentSuccessful');
+                            return view('payment/paymentSuccessful', compact(
+                                'user', 'transaction_ID', 'amount', 'payment_type', 'package_type', 'card_type',
+                                'MaskedCardNumber', 'transactionDate'
+                            ));
                         }
                     }
                 }

@@ -30,16 +30,13 @@
 														<td>
 													
 														
-															<img src="{{ URL::to('/') }}/images/sponsors.png" style="
-		background: #e23500;
-		border-bottom: 5px solid #e23500;
-	">
+															<img src="{{ URL::to('/') }}/images/sponsors.png" style="background: #e23500;border-bottom: 5px solid #e23500;">
 															<h1 style="font-size: 30px;"> Thank You For Registering</h1>
 															
 															<p style="font-size: 17px;">
 																Delegate No: {{ $user->id }}
 															</p>
-	
+
 															<p style="font-size: 17px;">
 															Dear {{ $user->first_name }},
 															</p> 
@@ -73,7 +70,7 @@
 															</ul> 
 															<p> 
 																If you would like to make any changes to your registration at a later stage, please contact  
-																the organizers of IDW 2018 at <a href="registrations@internationaldataweek.org." target="_top">registrations@internationaldataweek.org.</a> Please take note of the Cancellation &amp; Refund Policy stated in the <a href="#">Terms &amp; Conditions.</a> 
+																the organizers of IDW 2018 at <a href="registrations@internationaldataweek.org." target="_top">registrations@internationaldataweek.org.</a> Please take note of the Cancellation &amp; Refund Policy stated in the <a href="{{ URL::to('/') }}/pdf/TnCs%20-%20Privacy%20Policy%20-%20Disclaimer.pdf">Terms &amp; Conditions.</a> 
 															</p> 
 															<p> 
 																We appreciate your commitment to attend IDW 2018 and we look forward to seeing you in Botswana.
@@ -136,7 +133,7 @@
 																	</tr>
 																</tbody>
 															</table><br>
-																													Support Email: <a href="info@optimumqbw.com" target="_top">info@optimumqbw.com</a>
+																													Support Email: <a href="info@internationaldataweek.org" target="_top">info@internationaldataweek.org</a>
 																												
 														</td>
 													</tr>

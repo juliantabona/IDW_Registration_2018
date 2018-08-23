@@ -27,7 +27,6 @@ class IDWEventRegistered extends Mailable
     public function build()
     {
         return $this->subject('Registration Confirmation For '.$this->user->first_name.' '.$this->user->last_name)
-                    ->from('example@example.com', 'Awesome Name')
                     ->view('email.idw_team.registrationConfirmationEmail');
     }
 }

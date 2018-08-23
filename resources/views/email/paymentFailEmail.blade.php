@@ -53,7 +53,7 @@
 															</p> 
                                                             <p>
                                                                 Support Email: 
-                                                                <a href="info@optimumqbw.com" target="_top">info@optimumqbw.com</a>
+                                                                <a href="info@internationaldataweek.org" target="_top">info@internationaldataweek.org</a>
                                                             </p>	
                                                             <img src="{{ URL::to('/') }}/images/sponsors.png" style="background: #e23500;border-bottom: 5px solid #e23500;">												
 														</td>
