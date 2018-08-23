@@ -304,12 +304,12 @@
    } 
    /*-- //checkbox --*/  
    /*-- copyright --*/
-   .w3copyright-agile {
+   .idw-footer {
 	   margin: 0;
 	   text-align: center;
 	   background: #fff;
    }
-   .w3copyright-agile p {
+   .idw-footer p {
 	   font-size: .9em;
 	   color: #000;
 	   line-height: 1.8em;
@@ -318,7 +318,7 @@
 	   margin: 0 !important;
 	   padding: 25px !important;
    }
-   .w3copyright-agile p a{
+   .idw-footer p a{
 	   color: #000;
 	   transition: 0.5s all;
 	   -webkit-transition: 0.5s all;
@@ -326,7 +326,7 @@
 	   -o-transition: 0.5s all;
 	   -ms-transition: 0.5s all;
    }
-   .w3copyright-agile p a:hover{
+   .idw-footer p a:hover{
 	   color: #eb3b06;
 	   text-decoration: underline;
    }
@@ -583,7 +583,7 @@
    .main-registration-container {
 	   width: 75%; 
    }
-   .w3copyright-agile p { 
+   .idw-footer p { 
 	   padding: 0 2em;
    }
    } 
@@ -632,7 +632,7 @@
    input[type="submit"] {
 	   margin: 2em 0 1.5em;
    } 
-   .w3copyright-agile {
+   .idw-footer {
 	   margin: 1em 0 1em; 
    }
    }
@@ -640,7 +640,7 @@
    .main-registration-container {
 	   width: 88%; 
    }  
-   .w3copyright-agile p {
+   .idw-footer p {
 	   padding: 0 1em;
    }
    }
@@ -656,7 +656,7 @@
    .registration-box {
 	   padding: 1.2em;
    }
-   .w3copyright-agile {
+   .idw-footer {
 	   margin: 0 0 1em; 
    }
    input[type="text"], input[type="email"], input[type="password"] {
@@ -682,7 +682,7 @@
 	   padding: 0.8em;
 	   font-size: .85em;
    } 
-   .w3copyright-agile p {
+   .idw-footer p {
 	   font-size: .85em; 
    }
    .wthree-text label {
