@@ -30,7 +30,7 @@
 												<tbody>
 													<tr>
 														<td>
-															<img src="https://idw2018.optimumqbw.com/images/sponsors.png" style="background: #e23500;border-bottom: 5px solid #e23500;">
+															<img src="{{ URL::to('/') }}/images/sponsors.png" style="background: #e23500;border-bottom: 5px solid #e23500;">
 															<h1 style="font-size: 30px;">PAYMENT UNSUCCESSFUL</h1>
 															<br>
 															<p style="font-size: 17px;">
@@ -45,7 +45,7 @@
 																Payment for your participation in International Data Week (IDW) 2018, was not successful. Please try again. 
                                                             </p>
                                                             <br>
-															<form action="https://idw2018.optimumqbw.com/payment-options" method="POST">
+															<form action="{{ URL::to('/') }}/payment-options" method="POST">
 																{{ csrf_field() }}
 																<input type="hidden" class="hidden" name="email" value="{{ $user->email }}">
 																<input type="hidden" name="abortRegistration" value="1"> 
@@ -60,7 +60,7 @@
                                                                 Support Email: 
                                                                 <a href="info@optimumqbw.com" target="_top">info@optimumqbw.com</a>
                                                             </p>	
-                                                            <img src="https://idw2018.optimumqbw.com/images/sponsors.png" style="background: #e23500;border-bottom: 5px solid #e23500;">												
+                                                            <img src="{{ URL::to('/') }}/images/sponsors.png" style="background: #e23500;border-bottom: 5px solid #e23500;">												
 														</td>
 													</tr>
 												</tbody>

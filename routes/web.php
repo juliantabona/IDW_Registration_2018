@@ -28,6 +28,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Auth::routes();
+
 Route::post('/register', function (Request $request) {
     //  If we have the email provided
     if (!empty($request->input('email'))) {
@@ -91,7 +93,7 @@ Route::post('/register', function (Request $request) {
         //  Go back to registration page
         return redirect('/');
     }
-});
+})->name('register');
 
 Route::get('/payment-options', function (Request $request) {
     $user = null;
@@ -144,6 +146,7 @@ Route::get('/paymentSuccessful', function (Request $request) {
                         //  Get the user
                         $user = User::where('id', $transaction->user_id)->first();
                         if ($user) {
+                            return $user;
                             //  Mail the user on payment success
                             Mail::to($user->email)->send(new PaymentSuccess($user, $transaction));
 

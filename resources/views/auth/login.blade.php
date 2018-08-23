@@ -1,4 +1,4 @@
-@extends('layouts.app-plain') @section('content')
+@extends('layouts.app') @section('content')
 <div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-full-bg">
     <div class="row w-100">
         <div class="col-lg-4 mx-auto p-0">

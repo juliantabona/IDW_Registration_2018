@@ -1,48 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>International Data Week 2018</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Registration for the Internation Data Week 2018 event held in Botswana" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="css/normalize.css" rel="stylesheet" type="text/css" media="all" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<!-- Custom Theme files -->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //Custom Theme files -->
-<!-- web font --> 
-<link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
-<!-- //web font -->
-</head>
-<body>
-		<div style="display: block;border-bottom: 1px solid #f7f7f778;background: #ca2f00;">
-				<ul style="width: 100%;display: inline-block;">
-					<li style="float: left;"><img src="http://www.internationaldataweek.org/sites/all/themes/eventme/logo.png" style="max-width: 200px;padding: 0px;margin: 10px 0 0 30px;"></li>
-			  <li style="float: right;">
-				  <a href="/faq" class="menu-link">FAQ</a>
-				</li>
-			  <li style="float: right;">
-						<a href="/" class="menu-link">REGISTER</a>
-			  </li>
-				</ul>
-			</div>
-	<!-- main -->
-	<div class="main-w3layouts wrapper">
+@extends('layouts.app') 
+
+@section('content')
+
+    <div class="idw-content-container wrapper">
         <h1>Payment</h1>
-        @if(Session::has('alert'))
-            <div class="col-6 offset-3 mt-4">
-                <div class="alert alert-{{ Session::get('alert')[1] }}" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true" class="d-block mt-1 text-small">×</span>
-                    </button>
-                    {!! Session::get('alert')[0] !!}
-                </div>
-            </div>
-        @endif
-		<div class="main-registration-container" style="min-height: 300px;">
-			<div class="registration-box" style="min-height: 300px;"> 
+        <div class="main-registration-container" style="min-height: 300px;">
+            <div class="registration-box" style="min-height: 300px;"> 
                 <div id="section_A" class="section_box">
 
                     @if (Session::exists('user') && Session::exists('transaction') ) 
@@ -57,8 +20,7 @@
                             {{ csrf_field() }}
                             <input type="hidden" id="email" name="email" value="{{ Session::get('user')->email }}">
                             <button type="submit" class="btn">Try Again</button>
-                        </form>
-                            
+                        </form> 
                     @else
                         <div class="input-box">
                             <div class="input-highlight">
@@ -72,25 +34,10 @@
                                 <button type="submit" class="btn">Proceed To Payment</button>
                             </form>
                         </div>
-                        
                     @endif
-
                 </div> 
-			</div>	
-		</div>
-	</div>	 
-	<!-- copyright -->
-	<div class="w3copyright-agile">
-		<p><span>© International Data Week 2018. All rights reserved</span><br> Designed And Developed by <a href="http://www.optimumqbw.com" target="_blank">Optimum Q</a></p>
-	</div>
-	<!-- //copyright -->
-		
-		
-	<!-- //main --> 
+            </div>	
+        </div>
+    </div>	 	 
 
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	
-	</body>
-</html>
+@endsection

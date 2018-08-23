@@ -30,7 +30,7 @@
 														<td>
 													
 														
-															<img src="https://idw2018.optimumqbw.com/images/sponsors.png" style="
+															<img src="{{ URL::to('/') }}/images/sponsors.png" style="
 		background: #e23500;
 		border-bottom: 5px solid #e23500;
 	">
@@ -85,7 +85,7 @@
 															</p> 
 															<p>IDW 2018 Programme Committee</p>
 
-															<a href="https://idw2018.optimumqbw.com/payment-options?email={{ $user->email }}" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">Proceed To Payment</a>
+															<a href="{{ URL::to('/') }}/payment-options?email={{ $user->email }}" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">Proceed To Payment</a>
 															
 
 															<table style="width: 100%;background: #e23500;">
