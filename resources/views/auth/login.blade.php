@@ -3,7 +3,6 @@
     <div class="row w-100">
         <div class="col-lg-4 mx-auto p-0">
             <div class="auth-form-dark text-left p-5">
-                <img src="/images/btc-logo-2.png" alt="logo" class="d-block m-auto" style="width: 120px;">
                 <h4 class="font-weight-light mt-4 text-center">Login</h4>
                 <form method="POST" action="{{ route('login') }}" class="pt-4">
                     @csrf
