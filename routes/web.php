@@ -112,7 +112,7 @@ Route::get('/payment-options', function (Request $request) {
     $user = null;
 
     if (Session::has('user')) {
-        $user = Session::get('user');
+        $user = User::where('email', Session::get('user')->email)->first();
     } else {
         $userEmail = Input::get('email', false);
         if (!empty($userEmail)) {
@@ -141,7 +141,7 @@ Route::get('/bank-transfer', function (Request $request) {
     $user = null;
 
     if (Session::has('user')) {
-        $user = Session::get('user');
+        $user = User::where('email', Session::get('user')->email)->first();
     }
 
     if (!empty($user)) {
@@ -251,7 +251,7 @@ Route::get('/paymentUnSuccessful', function (Request $request) {
 });
 
 Route::get('/resend/paymentConfirmation', function (Request $request) {
-    $user = Session::get('user');
+    $user = User::where('email', Session::get('user')->email)->first();
 
     if ($user) {
         //  Get the user
