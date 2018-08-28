@@ -125,7 +125,7 @@ Route::get('/payment-options', function (Request $request) {
         //  Find out if they have payed successfully before
         $hasTransactedBefore = $user->transactions->where('success_state', 1)->count();
 
-        //  If they have paid successfully before
+        //  If they have paid
         if ($hasTransactedBefore != 0) {
             //  Notify the user
             $request->session()->flash('alert', array('You have already registered and paid for this event using your "'.$user->email.'" email! Visit your email to verify or <a href="/resend/paymentConfirmation">resend payment confirmation email</a>. Thank you', 'success'));
