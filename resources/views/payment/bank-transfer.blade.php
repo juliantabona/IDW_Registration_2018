@@ -12,7 +12,7 @@
                     <div class="section-header">
                         <h3>BANK TRANSFER PAYMENT</h3>
                     </div>  
-                    <p class="mt-4 mb-4">After you have successfully transfered your payment, kindly send your receipt to this email "idw2018@optimumqbw.com" for you to be confirmed as registered.</p>  
+                    <p class="mt-4 mb-4"style="font-weight: 100;">After you have successfully transfered your payment, kindly send your receipt to this email <span style="font-weight:400;">"idw2018@optimumqbw.com"</span> for you to be confirmed as registered.</p>  
                     <br>
                     <a href="/pdf/Bank_Transfer_Details.pdf" class="btn pay_now" target="_blank">VIEW BANK DETAILS</a>
                 </div> 
