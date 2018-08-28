@@ -80,7 +80,7 @@ Route::post('/register', function (Request $request) {
                 //  Send email to the user
                 Mail::to($request->input('email'))->send(new EventRegistered($user));
                 //  Send email to the IDW Team
-                Mail::to('julian@optimumqbw.com')->send(new IDWEventRegistered($user));
+                Mail::to('idw2018@optimumqbw.com')->send(new IDWEventRegistered($user));
 
                 //Alert update success
                 $request->session()->flash('alert', array('You have been registered successfully! Complete your application by paying for your seat', 'success'));
@@ -166,7 +166,7 @@ Route::get('/paymentSuccessful', function (Request $request) {
                             Mail::to($user->email)->send(new PaymentSuccess($user, $transaction));
 
                             //  Send email to the IDW Team
-                            Mail::to('julian@optimumqbw.com')->send(new IDWPaymentSuccess($user, $transaction));
+                            Mail::to('idw2018@optimumqbw.com')->send(new IDWPaymentSuccess($user, $transaction));
                             //  Go to payment success page
                             return view('payment/paymentSuccessful');
                         }
@@ -207,7 +207,7 @@ Route::get('/paymentUnSuccessful', function (Request $request) {
                             Mail::to($user->email)->send(new PaymentFail($user, $transaction));
 
                             //  Send email to the IDW Team
-                            Mail::to('julian@optimumqbw.com')->send(new IDWPaymentFail($user, $transaction));
+                            Mail::to('idw2018@optimumqbw.com')->send(new IDWPaymentFail($user, $transaction));
 
                             //  Go to payment success page
                             return view('payment/paymentUnSuccessful');
