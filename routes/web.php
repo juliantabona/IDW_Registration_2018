@@ -122,10 +122,10 @@ Route::get('/payment-options', function (Request $request) {
     }
 
     if (!empty($user)) {
-        return $user;
         //  Find out if they have payed successfully before
         $hasTransactedBefore = $user->transactions->where('success_state', 1)->count();
 
+        return $hasTransactedBefore;
         //  If they have paid
         if ($hasTransactedBefore != 0) {
             //  Notify the user
