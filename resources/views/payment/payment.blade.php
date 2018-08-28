@@ -127,7 +127,7 @@
 				}else{
 					if(payment_type == 'Bank Transfer'){
 						e.preventDefault();
-						window.location = 'pdf/Bank_Transfer_Details.pdf';
+						window.location = '/bank-transfer';
 					}
 				}
 

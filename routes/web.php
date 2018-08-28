@@ -108,6 +108,33 @@ Route::post('/register', function (Request $request) {
     }
 })->name('register');
 
+Route::get('/bank-transfer', function (Request $request) {
+    $user = null;
+
+    if (Session::has('user')) {
+        $user = Session::get('user');
+    }
+
+    if (!empty($user)) {
+        //  Find out if they have payed successfully before
+        $hasTransactedBefore = $user->transactions->where('success_state', 1)->count();
+
+        //  If they have paid successfully before
+        if ($hasTransactedBefore != 0) {
+            //  Notify the user
+            $request->session()->flash('alert', array('You have already registered and paid for this event using your "'.$user->email.'" email! Visit your email to verify or <a href="/resend/paymentConfirmation">resend payment confirmation email</a>. Thank you', 'success'));
+
+            return redirect('/');
+        } else {
+            return view('payment.bank-transfer');
+        }
+    }
+    //  Notify the user
+    $request->session()->flash('alert', array('Could not find delegate information to continue to bank transfer. Provide your email below', 'danger'));
+
+    return view('payment/payment');
+});
+
 Route::get('/payment-options', function (Request $request) {
     $user = null;
 
