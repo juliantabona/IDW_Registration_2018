@@ -18,10 +18,12 @@ use Illuminate\Http\Request;
 use App\Mail\PaymentFail;
 use App\Mail\PaymentSuccess;
 use App\Mail\EventRegistered;
+use App\Mail\BankTranferRequest;
 //  Emails to send to IDW team
 use App\Mail\IDWPaymentFail;
 use App\Mail\IDWPaymentSuccess;
 use App\Mail\IDWEventRegistered;
+use App\Mail\IDWBankTranferRequest;
 use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
@@ -47,9 +49,10 @@ Route::post('/register', function (Request $request) {
             //  If they have paid
             if ($hasTransactedBefore != 0) {
                 //  Notify the user
+                Session::forget('alert');
                 $request->session()->flash('alert', array('You have already registered and paid for this event! Visit your email to verify or <a href="/resend/paymentConfirmation">resend payment confirmation email</a>. Thank you', 'success'));
 
-                return back();
+                return redirect('/');
 
                 //  If they have not paid
             }
@@ -58,6 +61,7 @@ Route::post('/register', function (Request $request) {
         } else {
             if ($request->input('abortRegistration') == '1') {
                 //  Notify the user
+                Session::forget('alert');
                 $request->session()->flash('alert', array('Registration with "'.$request->input('email').'" does not exist. Please re-enter the email you used when registering previously otherwise return to <a href="/">Registration</a>', 'success'));
 
                 return back();
@@ -83,6 +87,7 @@ Route::post('/register', function (Request $request) {
                 Mail::to('idw2018@optimumqbw.com')->send(new IDWEventRegistered($user));
 
                 //Alert update success
+                Session::forget('alert');
                 $request->session()->flash('alert', array('You have been registered successfully! Complete your application by paying for your seat', 'success'));
             }
         }
@@ -101,6 +106,7 @@ Route::post('/register', function (Request $request) {
         //  Go to payment page
         return redirect('/payment-options');
     } else {
+        Session::forget('alert');
         $request->session()->flash('alert', array('Please register!', 'danger'));
 
         //  Go back to registration page
@@ -128,6 +134,7 @@ Route::get('/payment-options', function (Request $request) {
         //  If they have paid
         if ($hasTransactedBefore != 0) {
             //  Notify the user
+            Session::forget('alert');
             $request->session()->flash('alert', array('You have already registered and paid for this event using your "'.$user->email.'" email! Visit your email to verify or <a href="/resend/paymentConfirmation">resend payment confirmation email</a>. Thank you', 'success'));
 
             return redirect('/');
@@ -151,14 +158,38 @@ Route::get('/bank-transfer', function (Request $request) {
         //  If they have paid successfully before
         if ($hasTransactedBefore != 0) {
             //  Notify the user
+            Session::forget('alert');
             $request->session()->flash('alert', array('You have already registered and paid for this event using your "'.$user->email.'" email! Visit your email to verify or <a href="/resend/paymentConfirmation">resend payment confirmation email</a>. Thank you', 'success'));
 
             return redirect('/');
         } else {
+            $hasEmailedBankTransfer = $user->transactions->where('success_state', 3)->count();
+
+            if ($hasEmailedBankTransfer == 0) {
+                //  Send email to the user
+                Mail::to($request->input('email'))->send(new BankTranferRequest($user));
+                //  Send email to the IDW Team
+                Mail::to('idw2018@optimumqbw.com')->send(new IDWBankTranferRequest($user));
+
+                $user->transactions()->orderBy('created_at', 'desc')->first()->update([
+                    'success_state' => 3,
+                ]);
+
+                Session::forget('alert');
+                //  Notify the user
+                Session::forget('alert');
+                $request->session()->flash('alert', array('Bank transfer details have been sent to your "'.$user->email.'" email! Thank you', 'success'));
+            } else {
+                Session::forget('alert');
+                //  Notify the user
+                $request->session()->flash('alert', array('After you have successfully transfered your payment, kindly send your receipt to this email <span style="font-weight:400;">"registrations@internationaldataweek.org"</span> for you to be confirmed as registered. Thank you!', 'success'));
+            }
+
             return view('payment.bank-transfer');
         }
     }
     //  Notify the user
+    Session::forget('alert');
     $request->session()->flash('alert', array('Could not find delegate information to continue to bank transfer. Provide your email below', 'danger'));
 
     return view('payment/payment');
@@ -202,7 +233,7 @@ Route::get('/paymentSuccessful', function (Request $request) {
             }
         }
     }
-
+    Session::forget('alert');
     $request->session()->flash('alert', array('You are not authorized to access this page!', 'danger'));
 
     return redirect('/');
@@ -244,7 +275,7 @@ Route::get('/paymentUnSuccessful', function (Request $request) {
             }
         }
     }
-
+    Session::forget('alert');
     $request->session()->flash('alert', array('You are not authorized to access this page!', 'danger'));
 
     return redirect('/');
@@ -271,12 +302,14 @@ Route::get('/resend/paymentConfirmation', function (Request $request) {
             }
 
             //  Notify the user
+            Session::forget('alert');
             $request->session()->flash('alert', array('Payment confirmation email sent to "'.$user->email.'"</a>. Thank you', 'success'));
 
             return redirect('/');
 
         //  If they have not paid
         } else {
+            Session::forget('alert');
             $request->session()->flash('alert', array('You havent paid for this event using the email "'.$user->email.'"! Visit <a href="/payment-options">Payment Options</a> to pay for your seat', 'danger'));
 
             return redirect('/');
@@ -285,6 +318,7 @@ Route::get('/resend/paymentConfirmation', function (Request $request) {
         //  If the user does not exist
     }
 
+    Session::forget('alert');
     $request->session()->flash('alert', array('You are not authorized to access this page!', 'danger'));
 
     return redirect('/');

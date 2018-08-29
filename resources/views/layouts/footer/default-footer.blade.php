@@ -3,6 +3,6 @@
         <span>
             © International Data Week 2018. All rights reserved
         </span>
-        <br> Design by <a href="http://www.optimumqbw.com" target="_blank">Optimum Q</a>
+        <br> Designed And Developed by <a href="http://www.optimumqbw.com" target="_blank">Optimum Q</a>
     </p>
 </div>
