@@ -167,9 +167,9 @@ Route::get('/bank-transfer', function (Request $request) {
 
             if ($hasEmailedBankTransfer == 0) {
                 //  Send email to the user
-                //    Mail::to($request->input('email'))->send(new BankTranferRequest($user));
+                Mail::to($user->email)->send(new BankTranferRequest($user));
                 //  Send email to the IDW Team
-                //    Mail::to('idw2018@optimumqbw.com')->send(new IDWBankTranferRequest($user));
+                Mail::to('idw2018@optimumqbw.com')->send(new IDWBankTranferRequest($user));
 
                 $user->transactions()->orderBy('created_at', 'desc')->first()->update([
                     'success_state' => 3,
