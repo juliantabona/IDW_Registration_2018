@@ -38,6 +38,19 @@
 															</p>
 														
 															<p style="font-size: 20px;">
+																<strong>Payment Details:</strong>
+															</p>
+															<ul style=" background: #e2ffe1; padding: 15px;">
+																<li>Merchandise: {{ Request::get('p8') }}</li>
+																
+																<li>Amount: BWP {{ Request::get('p6') }}</li>
+														
+																<li>Reference: {{ $transaction->id }}</li>
+										
+																<li>Transaction Date: {{ Request::get('TimeResponseSentToRequestor') }}</li>
+															</ul>
+
+															<p style="font-size: 20px;">
 																	DELEGATE DETAILS
 																</p> 
 																<p> 

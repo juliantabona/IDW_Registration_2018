@@ -44,18 +44,17 @@
 																Please note that payment must be received within 15 days of registration.
                                                             </p>
                                                             <p> 
-                                                                If you prefer to pay using your Credit/Mastercard you may proceed by clicking on the button below:
+                                                                If you prefer to pay using your VISA/MasterCard you may proceed by clicking on the button below:
 															</p>
-	
+															<br>
+															<a href="{{ URL::to('/') }}/payment-options?email={{ $user->email }}" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">VISA/MasterCard Payment</a>
+															<br>
 															<p> 
 																Best regards,
 																
 															</p> 
 															<p>IDW 2018 Programme Committee</p>
-
-															<a href="{{ URL::to('/') }}/payment-options?email={{ $user->email }}" style="text-decoration:none;padding: 10px;color: #fff;background: #e23500;display: block;width: 50%;text-align: center;margin: 40px 20%;">Credit/Mastercard Payment</a>
 															
-
 															<table style="width: 100%;background: #e23500;">
 																<tbody>
 																	<tr>
