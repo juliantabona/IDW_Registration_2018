@@ -18,7 +18,7 @@
                                 <i class="float-left icon-loop icons icon-sm ml-3"></i>
                                 <form action="/overview" method="GET">
                                     <div class="d-flex table-responsive">
-                                        <input type="text" class="form-control" placeholder="Search delegate first name, last name or number..." style="height: 35px;margin-top: 10px;" name="search">
+                                        <input type="text" class="form-control" placeholder="Search delegate first name, last name or id..." style="height: 35px;margin-top: 10px;" name="search">
                                         <div class="btn-group ml-auto mr-2 border-0">
                                             <button type="submit" class="btn">Search</button>
                                         </div>
@@ -30,31 +30,34 @@
                                         <table class="table mt-3 border-top">
                                             <thead>
                                                 <tr>
+                                                    <th>ID</th>
                                                     <th>Full Name</th>
                                                     <th>Email</th>
                                                     <th>Phone</th>
                                                     <th>Country</th>
                                                     <th>City</th>
+                                                    <th>Date</th>
                                                     <th>Payment</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($users as $user)
                                                     <tr class='clickable-row' data-href="{{ route('delegate-show', [$user->id]) }}">
+                                                        <td>{{ $user->id ? $user->id:'____' }}</td>
                                                         <td>{{ $user->first_name ? $user->first_name:'____' }} {{ $user->last_name ? $user->last_name:'____' }}</td>
                                                         <td>{{ $user->email ? $user->email:'____' }}</td>
                                                         <td>{{ $user->phone ? $user->phone:'____' }}</td>
                                                         <td>{{ $user->country ? $user->country:'____' }}</td>
                                                         <td>{{ $user->city ? $user->city:'____' }}</td>
-                                                        <td>
+                                                        <td>{{ $user->created_at ? Carbon\Carbon::parse($user->created_at)->format('d M Y @ H:i:s A'):'____' }}</td>
                                                             @if( $user->transactions->where('success_state', 1)->count() != 0 )
-                                                                PAID
+                                                                <td class="bg-success">PAID
                                                             @elseif( $user->transactions->where('success_state', 3)->count() != 0)
-                                                                TRANSFER REQUEST
+                                                                <td class="bg-warning">TRANSFER REQUEST
                                                             @elseif( $user->transactions->where('success_state', 2)->count() != 0)
-                                                                FAILED PAYMENT
+                                                                <td class="bg-danger">FAILED PAYMENT
                                                             @else 
-                                                                N/A
+                                                                <td>N/A
                                                             @endif
                                                         </td>
                                                     </tr>

@@ -180,6 +180,7 @@
                                                 <th>Status</th>
                                                 <th>Method</th>
                                                 <th>Amount</th>
+                                                <th>Transaction ID</th>
                                                 <th>Date</th>
                                             </tr>
                                         </thead>
@@ -231,6 +232,13 @@
                                                     <td>
                                                         @if( $transaction->success_state == 1)
                                                             BWP {{ $transaction->amount }}
+                                                        @else 
+                                                            ___
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if( $transaction->success_state == 1)
+                                                            IDW-2018-{{ $transaction->id }}
                                                         @else 
                                                             ___
                                                         @endif
