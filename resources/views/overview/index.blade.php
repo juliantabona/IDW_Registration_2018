@@ -62,7 +62,7 @@
                                                             @if( $user->transactions->where('success_state', 1)->count() != 0 )
                                                                 <td class="bg-success">PAID
                                                             @elseif( $user->transactions->where('success_state', 3)->count() != 0)
-                                                                <td class="bg-warning">TRANSFER REQUEST
+                                                                <td class="bg-warning">TR
                                                             @elseif( $user->transactions->where('success_state', 2)->count() != 0)
                                                                 <td class="bg-danger">FAILED PAYMENT
                                                             @else 
