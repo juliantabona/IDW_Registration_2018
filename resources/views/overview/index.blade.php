@@ -49,7 +49,7 @@
                                                         <td>{{ $user->phone ? $user->phone:'____' }}</td>
                                                         <td>{{ $user->country ? $user->country:'____' }}</td>
                                                         <td>{{ $user->city ? $user->city:'____' }}</td>
-                                                        <td>{{ $user->created_at ? Carbon\Carbon::parse($user->created_at)->format('d M Y @ H:i:s A'):'____' }}</td>
+                                                        <td>{{ $user->created_at ? Carbon\Carbon::parse($user->created_at)->format('d M Y'):'____' }}</td>
                                                             @if( $user->transactions->where('success_state', 1)->count() != 0 )
                                                                 <td class="bg-success">PAID
                                                             @elseif( $user->transactions->where('success_state', 3)->count() != 0)
