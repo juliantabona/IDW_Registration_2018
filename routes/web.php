@@ -334,7 +334,7 @@ Route::get('/overview', function (Request $request) {
     //  If the user is searching
     if (!empty($request->input('search'))) {
         //  Get the search term
-        $search = $request->input('search');
+        $search = trim($request->input('search'));
         //  Search users matching the search term
         $users = User::with('transactions')
                     ->whereNull('username')
