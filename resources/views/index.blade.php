@@ -93,7 +93,7 @@
                     </article>
 
                     <a href="https://www.xe.com/currencyconverter" target="_blank" class="btn btn-half d-block ml-auto mr-auto mt-4">
-                    Currrency Converter
+                    Currency Converter
                     </a>
                     
                 </section>

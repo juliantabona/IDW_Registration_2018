@@ -339,7 +339,7 @@ Route::get('/overview', function (Request $request) {
                     ->orWhere('email', 'like', '%'.$search.'%')
                     ->paginate(20);
     } else {
-        $users = User::where('username', '!=', 'admin')->paginate(20);
+        $users = User::all();
     }
 
     return view('overview.index', compact('users'));
