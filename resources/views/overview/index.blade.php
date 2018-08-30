@@ -34,7 +34,23 @@
                                     </div>
                                 </form>
                                 @if( COUNT($users) )
-                                    <h3 class="card-title float-left mb-0 ml-2" style="font-size: 28px;margin-top: 15px;">Registered Delegates</h3>
+                                    <h3 class="card-title mb-0 ml-2" style="font-size: 28px;margin-top: 15px;">Registered Delegates</h3>
+                                    <ul style="margin-top: 20px;">
+                                        <li class="clear" style="display: inline-block;margin-right: 15px;margin-left: 5px;">
+                                            <div class="bg-success" style="width: 15px;height: 15px;margin: 4px;float: left;"></div>
+                                            <span style="float: left;">PAID</span>
+                                        </li>
+                                        <li class="clear" style="display: inline-block;margin-right: 15px;">
+                                            <div class="bg-warning" style="width: 15px;height: 15px;margin: 4px;float: left;"></div><span style="float: left;">Transfer Request (TR)</span>
+                                        </li>
+                                    
+                                        <li class="clear" style="display: inline-block;margin-right: 15px;">
+                                            <div class="bg-danger" style="width: 15px;height: 15px;margin: 4px;float: left;"></div><span style="float: left;">Failed Payment (FP)</span>
+                                        </li>
+                                        <li class="clear" style="display: inline-block;margin-right: 15px;">
+                                            <div class="bg-inverse-secondary" style="width: 15px;height: 15px;margin: 4px;float: left;"></div><span style="float: left;">N/A (No transactions)</span>
+                                        </li>
+                                    </ul>
                                     <div class="table-responsive table-hover">
                                         <table class="table mt-3 border-top">
                                             <thead>
@@ -64,7 +80,7 @@
                                                             @elseif( $user->transactions->where('success_state', 3)->count() != 0)
                                                                 <td class="bg-warning">TR
                                                             @elseif( $user->transactions->where('success_state', 2)->count() != 0)
-                                                                <td class="bg-danger">FAILED PAYMENT
+                                                                <td class="bg-danger">FP
                                                             @else 
                                                                 <td>N/A
                                                             @endif
