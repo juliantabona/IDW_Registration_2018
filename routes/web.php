@@ -331,19 +331,27 @@ Route::get('/faq', function () {
 });
 
 Route::get('/overview', function (Request $request) {
+    //  If the user is searching
     if (!empty($request->input('search'))) {
+        //  Get the search term
         $search = $request->input('search');
+        //  Search users matching the search term
         $users = User::where('id', $search)
+                    ->with('transactions')
                     ->orWhere('first_name', 'like', '%'.$search.'%')
                     ->orWhere('last_name', 'like', '%'.$search.'%')
                     ->orWhere('email', 'like', '%'.$search.'%')
                     ->paginate(20);
     } else {
-        //$users = User::paginate(20);
-        $users = User::whereNull('username')->orderBy('created_at', 'desc')->paginate(20);
+        $users = User::whereNull('username')
+                    ->with('transactions')
+                    ->orderBy('created_at', 'desc')
+                    ->paginate(20);
     }
 
-    return view('overview.index', compact('users'));
+    $totalTransactions = Transaction::sum('amount');
+
+    return view('overview.index', compact('users', 'totalTransactions'));
 })->middleware('auth');
 
 Route::get('delegates/{id}', function ($id) {

@@ -237,7 +237,10 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        @if( $transaction->success_state == 1)
+                                                        @if( $transaction->success_state == 1 ||
+                                                             $transaction->success_state == 2 ||
+                                                             $transaction->success_state == 3
+                                                        )
                                                             IDW-2018-{{ $transaction->id }}
                                                         @else 
                                                             ___

@@ -22,7 +22,7 @@
                                                 <td width="25%">
                                                     <b>Individuals from&nbsp;
                                                         <br>
-                                                        <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/906519" target="_blank">
+                                                        <a href="https://www.oecd.org/dac/financing-sustainable-development/development-finance-standards/DAC_List_ODA_Recipients2014to2017_flows_En.pdf" target="_blank">
                                                             Low and Middle Income Countries (LMIC)
                                                         </a>
                                                     </b>
@@ -306,6 +306,15 @@
                                 <label class="anim">
                                     <input type="radio" name="organisation_type" value="University" class="organisation_type checkbox" ></input>
                                     <span>University</span>
+                                </label>
+
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="wthree-text">
+                                <label class="anim">
+                                    <input type="radio" name="organisation_type" value="Other" class="organisation_type checkbox" ></input>
+                                    <span>Other</span>
                                 </label>
 
                                 <div class="clear"></div>
@@ -606,6 +615,14 @@
                                 </label>
                                 <div class="clear"></div>
                             </div>
+
+                            <div class="wthree-text">
+                                <label class="anim">
+                                    <input type="checkbox" name="organisation_affiliation" value="Other" class="organisation_affiliation checkbox"></input>
+                                    <span>Other</span>
+                                </label>
+                                <div class="clear"></div>
+                            </div>
                         </div>
 
                         <div class="input-box">
@@ -641,6 +658,14 @@
                                 <label class="anim">
                                     <input type="checkbox" name="communication_channel" value="AOSP" class="communication_channel checkbox" ></input>
                                     <span>AOSP</span>
+                                </label>
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="wthree-text">
+                                <label class="anim">
+                                    <input type="checkbox" name="communication_channel" value="Other" class="communication_channel checkbox" ></input>
+                                    <span>Other</span>
                                 </label>
                                 <div class="clear"></div>
                             </div>

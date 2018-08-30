@@ -1,7 +1,7 @@
 <div style="display: block;border-bottom: 1px solid #f7f7f778;background:#ca2f00;">
     <ul style="width: 100%;display: inline-block;">
         <li style="float: left;">
-            <a href="{{ URL::to('/') }}">
+            <a href="http://internationaldataweek.org/">
                 <img src="http://www.internationaldataweek.org/sites/all/themes/eventme/logo.png" style="max-width: 200px;padding: 0px;margin: 10px 0 0 30px;">
             </a>
         </li>

@@ -35,20 +35,29 @@
                                 </form>
                                 @if( COUNT($users) )
                                     <h3 class="card-title mb-0 ml-2" style="font-size: 28px;margin-top: 15px;">Registered Delegates</h3>
+                                    <p style="margin: 10px 8px;">TOTAL PAID: BWP {{ number_format($totalTransactions, 2) }}</p>
                                     <ul style="margin-top: 20px;">
                                         <li class="clear" style="display: inline-block;margin-right: 15px;margin-left: 5px;">
-                                            <div class="bg-success" style="width: 15px;height: 15px;margin: 4px;float: left;"></div>
-                                            <span style="float: left;">PAID</span>
+                                            <a href="overview?filter=paid" style="color:#000;">
+                                                <div class="bg-success" style="width: 15px;height: 15px;margin: 4px;float: left;"></div>
+                                                <span style="float: left;">PAID</span>
+                                            </a>
                                         </li>
                                         <li class="clear" style="display: inline-block;margin-right: 15px;">
-                                            <div class="bg-warning" style="width: 15px;height: 15px;margin: 4px;float: left;"></div><span style="float: left;">Transfer Request (TR)</span>
+                                            <a href="overview?filter=tr" style="color:#000;">
+                                                <div class="bg-warning" style="width: 15px;height: 15px;margin: 4px;float: left;"></div><span style="float: left;">Transfer Request (TR)</span>
+                                            </a>
                                         </li>
                                     
                                         <li class="clear" style="display: inline-block;margin-right: 15px;">
-                                            <div class="bg-danger" style="width: 15px;height: 15px;margin: 4px;float: left;"></div><span style="float: left;">Failed Payment (FP)</span>
+                                            <a href="overview?filter=fp" style="color:#000;">
+                                                <div class="bg-danger" style="width: 15px;height: 15px;margin: 4px;float: left;"></div><span style="float: left;">Failed Payment (FP)</span>
+                                            </a>
                                         </li>
                                         <li class="clear" style="display: inline-block;margin-right: 15px;">
-                                            <div class="bg-inverse-secondary" style="width: 15px;height: 15px;margin: 4px;float: left;"></div><span style="float: left;">N/A (No transactions)</span>
+                                            <a href="overview?filter=na" style="color:#000;">
+                                                <div class="bg-inverse-secondary" style="width: 15px;height: 15px;margin: 4px;float: left;"></div><span style="float: left;">N/A (No transactions)</span>
+                                            </a>
                                         </li>
                                     </ul>
                                     <div class="table-responsive table-hover">
