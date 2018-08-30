@@ -4,6 +4,15 @@
     
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
+    <style>
+        th {
+            font-size: 14px !important;
+        }
+        td {
+            font-size: 13px !important;
+        }
+    </style>
+
 @endsection 
 
 @section('content')
@@ -29,16 +38,16 @@
                                     <div class="table-responsive table-hover">
                                         <table class="table mt-3 border-top">
                                             <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Full Name</th>
-                                                    <th>Email</th>
-                                                    <th>Phone</th>
-                                                    <th>Country</th>
-                                                    <th>City</th>
-                                                    <th>Date</th>
-                                                    <th>Payment</th>
-                                                </tr>
+                                                    <tr> 
+                                                        <th>ID</th> 
+                                                        <th style="width:14%;">Full Name</th> 
+                                                        <th>Email</th> 
+                                                        <th style="width:12%;">Phone</th> 
+                                                        <th>Country</th> 
+                                                        <th>City</th> 
+                                                        <th style="width:11%;">Date</th> 
+                                                        <th>Payment</th> 
+                                                    </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach($users as $user)
