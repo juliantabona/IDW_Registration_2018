@@ -19,11 +19,13 @@ use App\Mail\PaymentFail;
 use App\Mail\PaymentSuccess;
 use App\Mail\EventRegistered;
 use App\Mail\BankTranferRequest;
+use App\Mail\PaymentApproval;
 //  Emails to send to IDW team
 use App\Mail\IDWPaymentFail;
 use App\Mail\IDWPaymentSuccess;
 use App\Mail\IDWEventRegistered;
 use App\Mail\IDWBankTranferRequest;
+use App\Mail\IDWPaymentApproval;
 use Illuminate\Support\Facades\Input;
 
 Route::get('/', function () {
@@ -373,10 +375,10 @@ Route::post('delegates/{id}/paymentApproval', function (Request $request, $id) {
                         $user = User::where('id', $transaction->user_id)->first();
                         if ($user) {
                             //  Mail the user on payment success
-                            //    Mail::to($user->email)->send(new PaymentApproval($user, $transaction));
+                            Mail::to($user->email)->send(new PaymentApproval($user, $transaction));
 
                             //  Send email to the IDW Team
-                            //    Mail::to('idw2018@optimumqbw.com')->send(new IDWPaymentApproval($user, $transaction));
+                            Mail::to('idw2018@optimumqbw.com')->send(new IDWPaymentApproval($user, $transaction));
                             //  Go to payment success page
 
                             Session::forget('alert');
