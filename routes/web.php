@@ -339,14 +339,20 @@ Route::get('/overview', function (Request $request) {
                     ->orWhere('email', 'like', '%'.$search.'%')
                     ->paginate(20);
     } else {
-        $users = User::paginate(20);
+        //$users = User::paginate(20);
+        $users = User::whereNull('username')->paginate(20);
     }
 
     return view('overview.index', compact('users'));
 })->middleware('auth');
 
 Route::get('delegates/{id}', function ($id) {
-    $profile = User::where('id', $id)->with('transactions')->first();
+    $profile = User::where('id', $id)->with(
+                    array(
+                        'transactions' => function ($query) {
+                            $query->orderBy('created_at', 'desc');
+                        }, )
+                    )->first();
 
     return view('overview.delegate', compact('profile'));
 })->name('delegate-show')->middleware('auth');

@@ -20,10 +20,7 @@
                                     <div class="d-flex table-responsive">
                                         <input type="text" class="form-control" placeholder="Search delegate first name, last name or number..." style="height: 35px;margin-top: 10px;" name="search">
                                         <div class="btn-group ml-auto mr-2 border-0">
-                                            <button type="submit" class="btn"><i class="icon-magnifier icons"></i> Search</button>
-                                            <a href="#" class="btn ml-2">
-                                                + Add Delegate
-                                            </a>
+                                            <button type="submit" class="btn">Search</button>
                                         </div>
                                     </div>
                                 </form>

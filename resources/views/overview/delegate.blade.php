@@ -18,10 +18,6 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            <a href="#" class="btn float-right" style=" max-width: 150px !important; ">
-                                <i class="icon-pencil icons"></i>
-                                Edit Profile
-                            </a>
                             <a href="/overview" class="btn float-right mr-2" style=" max-width: 150px !important; ">
                                 <i class="icon-pencil icons"></i>
                                 Back
@@ -240,7 +236,7 @@
                                                         @endif
                                                     </td>
                                                     <td>
-                                                        {{ $transaction->created_at ? Carbon\Carbon::parse($transaction->created_at)->format('d M Y @ H:i:s'):'____' }}
+                                                        {{ $transaction->created_at ? Carbon\Carbon::parse($transaction->created_at)->format('d M Y @ H:i:s A'):'____' }}
                                                     </td>
                                                 </tr>
                                             @endforeach
