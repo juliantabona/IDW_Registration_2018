@@ -1,9 +1,14 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app') 
 
-<div class="idw-content-container wrapper">
-    <h1>Payment</h1>
-    <div class="main-registration-container" style="min-height: 300px;">
-        <div class="registration-box" style="min-height: 300px;"> 
+@section('style')
+    
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+
+@endsection 
+
+@section('content')
+<div class="content-wrapper full-page-wrapper d-flex align-items-center auth login-full-bg">
+    <div class="row w-100">
         <div class="col-lg-4 mx-auto p-0">
             <div class="auth-form-dark text-left p-5">
                 <h4 class="font-weight-light mt-4 text-center">Login</h4>

@@ -9,12 +9,14 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/normalize.css" rel="stylesheet" type="text/css" media="all" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <!-- Custom Theme files -->
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        
         <!-- //Custom Theme files -->
         <!-- web font --> 
         <link href="//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
         <!-- //web font -->
+        <!-- Custom Theme files -->
+        @yield('style')
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
     </head>
     <body>
             

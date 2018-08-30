@@ -18,8 +18,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'days_attending', 'event_attending', 'first_name', 'last_name', 'gender', 'affiliation', 'position',
-        'country', 'organisation_type', 'address', 'address_2', 'city', 'state', 'zip_code', 'phone', 'email',
-        'additional_email', 'twitter_handle', 'organisation_affiliation', 'communication_channel',
+        'country', 'organisation_type', 'address', 'address_2', 'city', 'state', 'zip_code', 'phone', 'username',
+        'email', 'password', 'additional_email', 'twitter_handle', 'organisation_affiliation', 'communication_channel',
         'accessibility', 'allergies', 'send_future_updates', 'send_data_science_journal_updates',
         'agree_to_addon_list', 'agree_to_details_on_list',
     ];

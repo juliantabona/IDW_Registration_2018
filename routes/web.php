@@ -327,3 +327,72 @@ Route::get('/resend/paymentConfirmation', function (Request $request) {
 Route::get('/faq', function () {
     return view('faq');
 });
+
+Route::get('/overview', function (Request $request) {
+    if (!empty($request->input('search'))) {
+        $search = $request->input('search');
+        $users = User::where('id', $search)
+                    ->orWhere('first_name', 'like', '%'.$search.'%')
+                    ->orWhere('last_name', 'like', '%'.$search.'%')
+                    ->orWhere('email', 'like', '%'.$search.'%')
+                    ->paginate(20);
+    } else {
+        $users = User::where('username', '!=', 'admin')->paginate(20);
+    }
+
+    return view('overview.index', compact('users'));
+})->middleware('auth');
+
+Route::get('delegates/{id}', function ($id) {
+    $profile = User::where('id', $id)->with('transactions')->first();
+
+    return view('overview.delegate', compact('profile'));
+})->name('delegate-show')->middleware('auth');
+
+Route::post('delegates/{id}/paymentApproval', function (Request $request, $id) {
+    $transaction_ID = null;
+
+    if ($request->input('approve_payment') == '1') {
+        $transaction_ID = $request->input('transaction_ID');
+    }
+
+    if (!empty($transaction_ID)) {
+        $transaction = Transaction::find($transaction_ID);
+        if (!empty($transaction)) {
+            if ($transaction->success_state != 1) {
+                $transaction_state = $transaction->update([
+                    'payment_type' => $request->input('payment_type'),
+                    'package_type' => 'Early Ticket',
+                    'amount' => $request->input('package_type'),
+                    'success_state' => 1,                       //  SUCCESSFUL
+                ]);
+
+                if ($transaction_state) {
+                    if ($transaction) {
+                        //  Get the user
+                        $user = User::where('id', $transaction->user_id)->first();
+                        if ($user) {
+                            //  Mail the user on payment success
+                            //    Mail::to($user->email)->send(new PaymentApproval($user, $transaction));
+
+                            //  Send email to the IDW Team
+                            //    Mail::to('idw2018@optimumqbw.com')->send(new IDWPaymentApproval($user, $transaction));
+                            //  Go to payment success page
+
+                            Session::forget('alert');
+
+                            //  Notify the user
+                            $request->session()->flash('alert', array('Payment Approved!', 'success'));
+
+                            return redirect('delegates/'.$id);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    Session::forget('alert');
+    $request->session()->flash('alert', array('You are not authorized to access this page!', 'danger'));
+
+    return redirect('/');
+});

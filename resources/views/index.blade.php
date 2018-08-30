@@ -13,7 +13,7 @@
                         <div style="padding: 15px;border: 1px solid #a9a9a9;box-shadow: 0px -2px 5px #cccccc;">
                             <div>
                                 <div class="field-item even"property="content:encoded">
-                                    <p>Registration for International Data Week will open&nbsp;soon.&nbsp;The cost to attend the meeting is as follows:</p>
+                                    <p>Registration for International Data Week is now open. The cost to attend the meeting is as follows:</p>
                                     <table border="1" cellpadding="1" cellspacing="1" style="width: 100%;">
                                         <tbody>
                                             <tr>
