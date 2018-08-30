@@ -336,8 +336,9 @@ Route::get('/overview', function (Request $request) {
         //  Get the search term
         $search = $request->input('search');
         //  Search users matching the search term
-        $users = User::where('id', $search)
+        $users = User::whereNull('username')
                     ->with('transactions')
+                    ->where('id', $search)
                     ->orWhere('first_name', 'like', '%'.$search.'%')
                     ->orWhere('last_name', 'like', '%'.$search.'%')
                     ->orWhere('email', 'like', '%'.$search.'%')
