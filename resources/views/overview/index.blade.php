@@ -35,7 +35,7 @@
                                 </form>
                                 @if( COUNT($users) )
                                     <h3 class="card-title mb-0 ml-2" style="font-size: 28px;margin-top: 15px;">Registered Delegates</h3>
-                                    <p style="margin: 10px 8px;">TOTAL PAID: BWP {{ number_format($totalTransactions, 2) }}</p>
+                                    <p style="margin: 10px 8px;">TOTAL PAID:</p>
                                     <ul style="margin-top: 20px;">
                                         <li class="clear" style="display: inline-block;margin-right: 15px;margin-left: 5px;">
                                             <a href="overview?filter=paid" style="color:#000;">
