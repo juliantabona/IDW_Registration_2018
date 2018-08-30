@@ -336,8 +336,8 @@ Route::get('/overview', function (Request $request) {
         //  Get the search term
         $search = $request->input('search');
         //  Search users matching the search term
-        $users = User::whereNull('username')
-                    ->with('transactions')
+        $users = User::with('transactions')
+                    ->whereNull('username')
                     ->where('id', $search)
                     ->orWhere('first_name', 'like', '%'.$search.'%')
                     ->orWhere('last_name', 'like', '%'.$search.'%')
@@ -350,9 +350,11 @@ Route::get('/overview', function (Request $request) {
                     ->paginate(20);
     }
 
+    $totalPaid = Transaction::where('success_state', 1)->count();
+    $totalRegistered = User::whereNull('username')->count();
     $totalTransactions = Transaction::sum('amount');
 
-    return view('overview.index', compact('users', 'totalTransactions'));
+    return view('overview.index', compact('users', 'totalRegistered', 'totalTransactions', 'totalPaid'));
 })->middleware('auth');
 
 Route::get('delegates/{id}', function ($id) {

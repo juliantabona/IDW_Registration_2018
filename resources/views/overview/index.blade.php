@@ -35,9 +35,21 @@
                                 </form>
                                 @if( COUNT($users) )
                                     <h3 class="card-title mb-0 ml-2" style="font-size: 28px;margin-top: 15px;">Registered Delegates</h3>
-                                    @if(Auth::user()->username == "superadmin")
-                                        <p style="margin: 10px 8px;">TOTAL PAID: BWP {{ number_format($totalTransactions, 2) }}</p>
-                                    @endif
+                                    
+                                        <ul style="margin-top: 20px;">
+                                            <li class="clear" style="display: inline-block;margin-right: 15px;margin-left: 5px;">
+                                                <span style="float: left;">TOTAL REGISTERED: {{ $totalRegistered }}</span>
+                                            </li>
+                                            <li class="clear" style="display: inline-block;margin-right: 15px;margin-left: 5px;">
+                                                <span style="float: left;">TOTAL PAID: {{ $totalPaid }}</span>
+                                            </li>
+                                            @if(Auth::user()->username == "superadmin")
+                                            <li class="clear" style="display: inline-block;margin-right: 15px;">
+                                                <span style="float: left;">TOTAL AMOUNT: BWP {{ number_format($totalTransactions, 2) }}</span>
+                                            </li>
+                                            @endif
+                                        </ul>
+                                   
                                     <ul style="margin-top: 20px;">
                                         <li class="clear" style="display: inline-block;margin-right: 15px;margin-left: 5px;">
                                             <a href="overview?filter=paid" style="color:#000;">
@@ -71,7 +83,7 @@
                                                         <th>Email</th> 
                                                         <th style="width:12%;">Phone</th> 
                                                         <th>Country</th> 
-                                                        <th>City</th> 
+                                                        <th>Organisation</th> 
                                                         <th style="width:11%;">Date</th> 
                                                         <th>Payment</th> 
                                                     </tr>
@@ -110,6 +122,10 @@
                                 @else
                                     <div class="col-4 offset-4" style=" background: #f1f1f1; padding: 20px; ">
                                         <h2 style="font-size: 28px;margin-top: 30px;text-align: center;">No Delegates Found</h2>
+                                    </div>
+                                @endif
+                                @if( !empty(app('request')->input('search')) )
+                                    <div class="col-4 offset-4">
                                         <a href="/overview" class="btn btn-primary ml-2 mt-5">
                                             View List
                                         </a>
