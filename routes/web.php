@@ -340,7 +340,7 @@ Route::get('/overview', function (Request $request) {
                     ->paginate(20);
     } else {
         //$users = User::paginate(20);
-        $users = User::whereNull('username')->paginate(20);
+        $users = User::whereNull('username')->orderBy('created_at', 'desc')->paginate(20);
     }
 
     return view('overview.index', compact('users'));
