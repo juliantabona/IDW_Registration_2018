@@ -43,7 +43,7 @@
                                             <li class="clear" style="display: inline-block;margin-right: 15px;margin-left: 5px;">
                                                 <span style="float: left;">TOTAL PAID: {{ $totalPaid }}</span>
                                             </li>
-                                            @if(Auth::user()->username == "superadmin")
+                                            @if(Auth::user()->username != "admin")
                                             <li class="clear" style="display: inline-block;margin-right: 15px;">
                                                 <span style="float: left;">TOTAL AMOUNT: BWP {{ number_format($totalTransactions, 2) }}</span>
                                             </li>
