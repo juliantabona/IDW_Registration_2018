@@ -26,12 +26,12 @@
                         <i class="mdi mdi-account"></i>
                         @if ($errors->has('username'))
                         <span class="help-block invalid-feedback d-block">
-                            <strong>Username & Password don't match</strong>
+                            <strong>Please contact system administrator. Thank you</strong>
                         </span>
                         @endif
                         @if ($errors->has('email'))
                         <span class="help-block invalid-feedback d-block">
-                            <strong>Email & Password don't match</strong>
+                            <strong>Please contact system administrator. Thank you</strong>
                         </span>
                         @endif
                     </div>
