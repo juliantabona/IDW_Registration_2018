@@ -28,7 +28,7 @@ class PaymentApproval extends Mailable
      */
     public function build()
     {
-        return $this->subject('Bank Transfer Confirmation')
+        return $this->subject('Payment Confirmation')
                     ->view('email.bankTransferApprovedEmail');
     }
 }

@@ -30,7 +30,7 @@
 													<tr>
 														<td>
 															<img src="{{ URL::to('/') }}/images/sponsors.png" style="background: #e23500;border-bottom: 5px solid #e23500;">
-															<h1 style="font-size: 30px;">BANK TRANSFER CONFIRMATION</h1>
+															<h1 style="font-size: 30px;">PAYMENT CONFIRMATION</h1>
 															<br>
 															<p style="font-size: 17px;">
 																Delegate No: {{ $user->id }}
