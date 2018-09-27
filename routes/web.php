@@ -415,3 +415,46 @@ Route::post('delegates/{id}/paymentApproval', function (Request $request, $id) {
 
     return redirect('/');
 });
+
+Route::get('download', function () {
+    $headers = array(
+        'Content-type' => 'text/csv',
+        'Content-Disposition' => 'attachment; filename=file.csv',
+        'Pragma' => 'no-cache',
+        'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+        'Expires' => '0',
+    );
+
+    $users = User::with('transactions')->whereNull('username')->orderBy('created_at', 'desc')->get();
+
+    $printableList = collect($users)->map(function ($user) {
+        $result = '';
+        if (collect($user->transactions)->contains('success_state', '1')) {
+            $result = 'PAID';
+        } elseif (collect($user->transactions)->contains('success_state', '3')) {
+            $result = 'TR';
+        } elseif (collect($user->transactions)->contains('success_state', '0')) {
+            $result = 'FP';
+        } else {
+            $result = 'N/A';
+        }
+
+        return collect($user)->forget(['transactions', 'username', 'password',
+                                       'created_at', 'updated_at', ])->put('payment', $result);
+    });
+
+    $list = $printableList->toArray();
+
+    // add headers for each column in the CSV download
+    array_unshift($list, array_keys($list[0]));
+
+    $callback = function () use ($list) {
+        $FH = fopen('php://output', 'w');
+        foreach ($list as $row) {
+            fputcsv($FH, $row);
+        }
+        fclose($FH);
+    };
+
+    return Response::stream($callback, 200, $headers);
+});

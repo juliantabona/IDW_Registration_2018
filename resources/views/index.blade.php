@@ -176,9 +176,9 @@
                             <div class="wthree-text">
                                 <label class="anim">
                                     <input
-                                        type="checkbox" name="event_attending" value="Welcome Reception, 4 November 2018 (evening)" class="event_attending checkbox" ></input>
+                                        type="checkbox" name="event_attending" value="Welcome Reception, 5 November 2018 (evening)" class="event_attending checkbox" ></input>
                                     <span>
-                                        Welcome Reception, 4 November 2018 (evening)
+                                        Welcome Reception, 5 November 2018 (evening)
                                     </span>
                                 </label>
                                 <div class="clear"></div>
@@ -186,9 +186,9 @@
 
                             <div class="wthree-text">
                                 <label class="anim">
-                                    <input type="checkbox" name="event_attending" value="Dinner Reception, 5 November 2018" class="event_attending checkbox"></input>
+                                    <input type="checkbox" name="event_attending" value="Dinner Reception, 7 November 2018" class="event_attending checkbox"></input>
                                     <span>
-                                        Dinner Reception, 5 November 2018
+                                        Dinner Reception, 7 November 2018
                                     </span>
                                 </label>
                                 <div class="clear"></div>

@@ -34,8 +34,10 @@
                                     </div>
                                 </form>
                                 @if( COUNT($users) )
+                                @if(Auth::user()->username != "admin")
+                                    <a href="/download" class ="btn" target="_blank">Download CSV</a>
+                                @endif
                                     <h3 class="card-title mb-0 ml-2" style="font-size: 28px;margin-top: 15px;">Registered Delegates</h3>
-                                    
                                         <ul style="margin-top: 20px;">
                                             <li class="clear" style="display: inline-block;margin-right: 15px;margin-left: 5px;">
                                                 <span style="float: left;">TOTAL REGISTERED: {{ $totalRegistered }}</span>

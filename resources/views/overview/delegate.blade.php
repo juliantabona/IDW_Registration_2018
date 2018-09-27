@@ -170,6 +170,7 @@
                         <hr />
                         
                         <div class="row bg-inverse-info shadow">
+
                             <div class="col-12">
                                 <h4 class="mt-3 ml-3"><b>Recent Activities</b></h4>
                                 @if(COUNT($profile->transactions))
@@ -201,21 +202,7 @@
                                                         @if( $transaction->success_state == 1 )
                                                             SUCCESS
                                                         @elseif( $transaction->success_state == 3 )
-                                                            <div style=" border: 1px dotted #000; padding: 25px 15px 5px; ">
-                                                                <h3 style="font-size: 16px;" class="mb-2">TRANSFER REQUEST</h3>
-                                                                <form action="/delegates/{{ $profile->id }}/paymentApproval" method="POST">
-                                                                    {{ csrf_field() }}
-                                                                    <input type="hidden" name="approve_payment" value="1">
-                                                                    <input type="hidden" name="transaction_ID" value="{{ $transaction->id }}"> 
-                                                                    <input type="hidden" name="payment_type" value="Bank Transfer"> 
-                                                                    <select class="form-control" name="package_type" data-cesta-feira-attribute="">
-                                                                        <option value="2064">Students: 2,000 (BWP)</option>
-                                                                        <option value="2064">LMIC COUNTRIES: 2,000 (BWP)</option>
-                                                                        <option value="6192">All Others: 6,000 (BWP)</option>
-                                                                    </select>
-                                                                    <button type="submit" class="btn">Approve Payment</button>
-                                                                </form>
-                                                            </div>
+                                                            TRANSFER REQUEST
                                                         @elseif( $transaction->success_state == 2 )
                                                             FAIL
                                                         @else 
@@ -257,6 +244,36 @@
                                     <p class="ml-3 mt-4 mb-0 text-muted text-center"><i class="icon-docs icons"></i> No Activity.</p>
                                 @endif
                             </div>
+
+                            <div class="col-6 offset-6">
+                                    @if( $profile->transactions->where('success_state', 1)->count() == 0 )
+                                        @foreach($profile->transactions as $transaction)
+                                            @if( $transaction->success_state != 1 )
+                                                <div style=" border: 1px dotted #000; padding: 25px 15px 5px; ">
+                                                    <h3 style="font-size: 16px;" class="mb-3 mt-2">Approve Payment</h3>
+                                                    <form id="payment_approval_form" action="/delegates/{{ $profile->id }}/paymentApproval" method="POST">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="approve_payment" value="1">
+                                                        <input type="hidden" name="transaction_ID" value="{{ $transaction->id }}"> 
+                                                        <select class="form-control" name="payment_type">
+                                                            <option value="Bank Transfer">Bank Transfer</option>
+                                                            <option value="Approved Online Transfer">VISA/MasterCard</option>
+                                                            <option value="Other">Other</option>
+                                                        </select>
+                                                        <select class="form-control mt-2" name="package_type" data-cesta-feira-attribute="">
+                                                            <option value="2064">Students: 2,000 (BWP)</option>
+                                                            <option value="2064">LMIC COUNTRIES: 2,000 (BWP)</option>
+                                                            <option value="6192">All Others: 6,000 (BWP)</option>
+                                                        </select>
+                                                        <button type="button" class="btn mt-3" onclick="getConfirmation();">Approve Payment</button>
+                                                    </form>
+                                                </div>
+                                                @break
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                </div>
+
                         </div>
                     </div>
                 </div>
@@ -279,8 +296,20 @@
                     window.location = $(this).data("href");
                   }
                 }
-              });
             });
+            
+        });
+
+        function getConfirmation(){
+            var retVal = confirm("Are you sure you want to approve payment?");
+            if( retVal == true ){
+                $('#payment_approval_form').submit();
+            }
+            else{
+                return false;
+            }
+        }
+
     </script>
 
 @endsection
