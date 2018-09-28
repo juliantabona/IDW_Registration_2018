@@ -178,7 +178,7 @@
                                     <input
                                         type="checkbox" name="event_attending" value="Welcome Reception, 5 November 2018 (evening)" class="event_attending checkbox" ></input>
                                     <span>
-                                        Welcome Reception, 5 November 2018 (evening)
+                                        Welcome Cocktail Reception, 5th November 2018 at 18:00hrs
                                     </span>
                                 </label>
                                 <div class="clear"></div>
@@ -188,7 +188,7 @@
                                 <label class="anim">
                                     <input type="checkbox" name="event_attending" value="Dinner Reception, 7 November 2018" class="event_attending checkbox"></input>
                                     <span>
-                                        Dinner Reception, 7 November 2018
+                                        Cultural Dinner, 7th November 2018 at 19:00hrs
                                     </span>
                                 </label>
                                 <div class="clear"></div>
