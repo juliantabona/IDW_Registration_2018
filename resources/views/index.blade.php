@@ -31,18 +31,6 @@
                                             </tr>
                                             <tr>
                                                 <td>
-                                                    Early Bird Rate&nbsp;
-                                                    <br>
-                                                    <strong>
-                                                        <i>Deadline: 30 September 2018</i>
-                                                    </strong>
-                                                </td>
-                                                <td>2,000 Botswana P (BWP)</td>
-                                                <td>2,000&nbsp;(BWP)</td>
-                                                <td>6,000 (BWP)</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
                                                     Standard Rate&nbsp;
                                                     <br>
                                                     <strong>

@@ -14,7 +14,7 @@
                         <div class="section-header">
                             <h3>PAYMENT OPTIONS</h3>
                         </div>  
-                        <h4>EARLY BIRD RATE</h4>
+                        <h4>STANDARD RATE</h4>
                         <p class="mb-4">Deadline 30 September 2018</p>
                         <div class="input-box">
                             <span class="mb-2 d-block">I have Read and Agree to the <a href="/pdf/TnCs%20-%20Privacy%20Policy%20-%20Disclaimer.pdf" target="_blank">Terms and Conditions, Privacy Policy and Disclaimer*</a></span>
@@ -38,12 +38,12 @@
                                 <label class="anim">
                                     <input type="hidden" name="p1" value="3463"> 
                                     <input type="hidden" name="p2" value="{{ Session::get('transaction')->id }}"> 
-                                    <input type="hidden" name="p3" value="Early Ticket"> 
+                                    <input type="hidden" name="p3" value="Standard Ticket"> 
                                     
                                     <select class="form-control" name="p4" data-cesta-feira-attribute="" >
-                                        <option value="2064">Students: 2,000 (BWP)</option>
-                                        <option value="2064">LMIC COUNTRIES: 2,000 (BWP)</option>
-                                        <option value="6192">All Others: 6,000 (BWP)</option>
+                                        <option value="2580">Students: 2,500 (BWP)</option>
+                                        <option value="3096">LMIC COUNTRIES: 3,000 (BWP)</option>
+                                        <option value="7224">All Others: 7,000 (BWP)</option>
                                     </select>
 
                                     <input type="hidden" name="UrlsProvided" value="Y">  

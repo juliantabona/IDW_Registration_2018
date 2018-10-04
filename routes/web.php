@@ -201,7 +201,7 @@ Route::get('/paymentSuccessful', function (Request $request) {
     $transaction_ID = Input::get('p2', false);    //  Transaction ID
     $amount = Input::get('p6', false);            //  Amount
     $payment_type = Input::get('p7', false);      //  Card Type e.g Visa
-    $package_type = Input::get('p8', false);      //  Package Type e.g Early Ticket
+    $package_type = Input::get('p8', false);      //  Package Type e.g Standard Ticket
     $card_name = Input::get('p5', false);         //  Card Name, e.g Visa Test Card 001
     $MaskedCardNumber = Input::get('MaskedCardNumber', false);                 //  Masked Card Number, e.g Visa Test Card 001
     $transactionDate = Input::get('TimeResponseSentToRequestor', false);       //  Transaction date
@@ -381,7 +381,7 @@ Route::post('delegates/{id}/paymentApproval', function (Request $request, $id) {
             if ($transaction->success_state != 1) {
                 $transaction_state = $transaction->update([
                     'payment_type' => $request->input('payment_type'),
-                    'package_type' => 'Early Ticket',
+                    'package_type' => 'Standard Ticket',
                     'amount' => $request->input('package_type'),
                     'success_state' => 1,                       //  SUCCESSFUL
                 ]);
