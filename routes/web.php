@@ -478,12 +478,6 @@ Route::post('delegates/{id}/registrationConfirmation', function (Request $reques
     $provided_email = $request->input('email');
 
     if (!empty($provided_email)) {
-        $user = User::where('email', $provided_email)->first();
-    } else {
-        $user = null;
-    }
-
-    if ($user) {
         //  Get the user
         $user = User::where('id', $id)->first();
 
@@ -510,12 +504,6 @@ Route::post('delegates/{id}/paymentConfirmation', function (Request $request, $i
     $provided_email = $request->input('email');
 
     if (!empty($provided_email)) {
-        $user = User::where('email', $provided_email)->first();
-    } else {
-        $user = null;
-    }
-
-    if ($user) {
         //  Get the user
         $user = User::where('id', $id)->first();
 
