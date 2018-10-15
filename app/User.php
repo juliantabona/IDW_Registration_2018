@@ -5,11 +5,26 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    use EntrustUserTrait;
+    use EntrustUserTrait { restore as private restoreA; }
+    use SoftDeletes { restore as private restoreB; }
+
+    public function restore()
+    {
+        $this->restoreA();
+        $this->restoreB();
+    }
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.

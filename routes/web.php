@@ -69,17 +69,23 @@ Route::post('/register', function (Request $request) {
                 return back();
             } else {
                 //  If the user specified a custom organisation type then use it instead
-                if (!empty($request->input('organisation_type_other'))) {
+                if (!empty($request->input('organisation_type_other')) && $request->input('organisation_type') == 'Other') {
                     $request->merge([
                             'organisation_type' => $request->input('organisation_type_other'),
                         ]);
                 }
                 //  If the user specified a custom communication channel then use it instead
-                if (!empty($request->input('communication_channel_other'))) {
+                if (!empty($request->input('communication_channel_other')) && $request->input('communication_channel') == 'Other') {
                     $request->merge([
                             'communication_channel' => $request->input('communication_channel_other'),
                         ]);
                 }
+
+                $event_attending = implode(' & ', $request->input('event_attending'));
+                $request->merge(['event_attending' => $event_attending]);
+
+                $days_attending = implode(' & ', $request->input('days_attending'));
+                $request->merge(['days_attending' => $days_attending]);
 
                 //  Create a new user
                 $user = User::create($request->all());
@@ -285,14 +291,11 @@ Route::get('/paymentUnSuccessful', function (Request $request) {
 
 Route::get('/resend/paymentConfirmation', function (Request $request) {
     $user = User::where('email', Session::get('user')->email)->first();
-
     if ($user) {
         //  Get the user
         $user = User::where('email', $user->email)->first();
-
         //  Find out if they have payed successfully before
         $hasTransactedBefore = $user->transactions->where('success_state', 1)->count();
-
         //  If they have paid successfully before
         if ($hasTransactedBefore != 0) {
             //  Get the paid transaction
@@ -302,13 +305,11 @@ Route::get('/resend/paymentConfirmation', function (Request $request) {
                 //  Send the email
                 Mail::to($user->email)->send(new PaymentSuccess($user, $transaction));
             }
-
             //  Notify the user
             Session::forget('alert');
             $request->session()->flash('alert', array('Payment confirmation email sent to "'.$user->email.'"</a>. Thank you', 'success'));
 
             return redirect('/');
-
         //  If they have not paid
         } else {
             Session::forget('alert');
@@ -316,10 +317,8 @@ Route::get('/resend/paymentConfirmation', function (Request $request) {
 
             return redirect('/');
         }
-
         //  If the user does not exist
     }
-
     Session::forget('alert');
     $request->session()->flash('alert', array('You are not authorized to access this page!', 'danger'));
 
@@ -368,6 +367,63 @@ Route::get('delegates/{id}', function ($id) {
     return view('overview.delegate', compact('profile'));
 })->name('delegate-show')->middleware('auth');
 
+Route::post('delegates/{id}', function (Request $request, $id) {
+    //  If the user specified a custom organisation type then use it instead
+    if (!empty($request->input('organisation_type_other')) && $request->input('organisation_type') == 'Other') {
+        $request->merge([
+                'organisation_type' => $request->input('organisation_type_other'),
+            ]);
+    }
+    //  If the user specified a custom communication channel then use it instead
+    if (!empty($request->input('communication_channel_other')) && $request->input('communication_channel') == 'Other') {
+        $request->merge([
+                'communication_channel' => $request->input('communication_channel_other'),
+            ]);
+    }
+
+    $event_attending = implode(' & ', $request->input('event_attending'));
+    $request->merge(['event_attending' => $event_attending]);
+
+    $days_attending = implode(' & ', $request->input('days_attending'));
+    $request->merge(['days_attending' => $days_attending]);
+
+    //  Create a new user
+    $user = User::find($id)->update($request->all());
+
+    if ($user) {
+        //  Notify the user
+        Session::forget('alert');
+        $request->session()->flash('alert', array('Delegate details updated!', 'success'));
+    } else {
+        Session::forget('alert');
+        $request->session()->flash('alert', array('Could not update delegate details', 'danger'));
+    }
+
+    return redirect(route('delegate-show', [$id]));
+})->name('delegate-save')->middleware('auth');
+
+Route::get('delegates/{id}/edit', function ($id) {
+    $profile = User::where('id', $id)->first();
+
+    return view('overview.delegate-update', compact('profile'));
+})->name('delegate-edit')->middleware('auth');
+
+Route::delete('delegates/{id}', function (Request $request, $id) {
+    $deleted = User::where('id', $id)->delete();
+
+    if ($deleted) {
+        //  Notify the user
+        Session::forget('alert');
+        $request->session()->flash('alert', array('Delegate deleted successfully!', 'success'));
+    } else {
+        return $deleted;
+        Session::forget('alert');
+        $request->session()->flash('alert', array('Delegate counld not be deleted! Try again', 'danger'));
+    }
+
+    return redirect('/overview');
+})->name('delegate-delete')->middleware('auth');
+
 Route::post('delegates/{id}/paymentApproval', function (Request $request, $id) {
     $transaction_ID = null;
 
@@ -414,6 +470,85 @@ Route::post('delegates/{id}/paymentApproval', function (Request $request, $id) {
     $request->session()->flash('alert', array('You are not authorized to access this page!', 'danger'));
 
     return redirect('/');
+});
+
+Route::post('delegates/{id}/registrationConfirmation', function (Request $request, $id) {
+    $provided_email = $request->input('email');
+
+    if (!empty($provided_email)) {
+        $user = User::where('email', $provided_email)->first();
+    } else {
+        $user = null;
+    }
+
+    if ($user) {
+        //  Get the user
+        $user = User::where('id', $id)->first();
+
+        //  If we have the user and transaction details
+        if ($user) {
+            //  Notify the user
+            Session::forget('alert');
+            $request->session()->flash('alert', array('Registration confirmation email sent to "'.$provided_email.'"</a>. Thank you', 'success'));
+
+            //  Send the email
+            Mail::to($provided_email)->send(new EventRegistered($user));
+        }
+    }
+
+    Session::forget('alert');
+    $request->session()->flash('alert', array('Something went wrong trying to resend the email!', 'danger'));
+
+    return redirect('delegates/'.$id);
+});
+
+Route::post('delegates/{id}/paymentConfirmation', function (Request $request, $id) {
+    $provided_email = $request->input('email');
+
+    if (!empty($provided_email)) {
+        $user = User::where('email', $provided_email)->first();
+    } else {
+        $user = null;
+    }
+
+    if ($user) {
+        //  Get the user
+        $user = User::where('id', $id)->first();
+
+        //  Find out if they have payed successfully before
+        $hasTransactedBefore = $user->transactions->where('success_state', 1)->count();
+
+        //  If they have paid successfully before
+        if ($hasTransactedBefore != 0) {
+            //  Get the paid transaction
+            $transaction = Transaction::where('user_id', $user->id)->where('success_state', 1)->first();
+            //  If we have the user and transaction details
+            if ($user && $transaction) {
+                //  Send the email
+                Mail::to($provided_email)->send(new PaymentSuccess($user, $transaction));
+            }
+
+            //  Notify the user
+            Session::forget('alert');
+            $request->session()->flash('alert', array('Payment confirmation email sent to "'.$provided_email.'"</a>. Thank you', 'success'));
+
+            return redirect('delegates/'.$id);
+
+        //  If they have not paid
+        } else {
+            Session::forget('alert');
+            $request->session()->flash('alert', array('Email not sent! This delegate has not paid yet.', 'danger'));
+
+            return redirect('delegates/'.$id);
+        }
+
+        //  If the user does not exist
+    }
+
+    Session::forget('alert');
+    $request->session()->flash('alert', array('Something went wrong trying to resend the email!', 'danger'));
+
+    return redirect('delegates/'.$id);
 });
 
 Route::get('download', function () {

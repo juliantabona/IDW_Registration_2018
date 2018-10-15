@@ -126,7 +126,7 @@
 
                             <div class="wthree-text mt-2">
                                 <label class="anim">
-                                    <input type="checkbox" name="days_attending" value="Monday, 5 November 2018" class="days_attending checkbox" ></input>
+                                    <input type="checkbox" name="days_attending[]" value="Monday, 5 November 2018" class="days_attending checkbox" ></input>
                                     <span>Monday, 5 November 2018</span>
                                 </label>
                                 <div class="clear"></div>
@@ -134,7 +134,7 @@
 
                             <div class="wthree-text">
                                 <label class="anim">
-                                    <input type="checkbox" name="days_attending" value="Tuesday, 6 November 2018" class="days_attending checkbox"  ></input>
+                                    <input type="checkbox" name="days_attending[]" value="Tuesday, 6 November 2018" class="days_attending checkbox"  ></input>
                                     <span>Tuesday, 6 November 2018</span>
                                 </label>
                                 <div class="clear"></div>
@@ -142,7 +142,7 @@
 
                             <div class="wthree-text">
                                 <label class="anim">
-                                    <input type="checkbox" name="days_attending" value="Wednesday, 7 November 2018" class="days_attending checkbox" ></input>
+                                    <input type="checkbox" name="days_attending[]" value="Wednesday, 7 November 2018" class="days_attending checkbox" ></input>
                                     <span>Wednesday, 7 November 2018</span>
                                 </label>
                                 <div class="clear"></div>
@@ -150,7 +150,7 @@
 
                             <div class="wthree-text">
                                 <label class="anim">
-                                    <input type="checkbox" name="days_attending" value="Thursday, 8 November 2018" class="days_attending checkbox"></input>
+                                    <input type="checkbox" name="days_attending[]" value="Thursday, 8 November 2018" class="days_attending checkbox"></input>
                                     <span>Thursday, 8 November 2018</span>
                                 </label>
                                 <div class="clear"></div>
@@ -164,7 +164,7 @@
                             <div class="wthree-text">
                                 <label class="anim">
                                     <input
-                                        type="checkbox" name="event_attending" value="Welcome Reception, 5 November 2018 (evening)" class="event_attending checkbox" ></input>
+                                        type="checkbox" name="event_attending[]" value="Welcome Reception, 5 November 2018 (evening)" class="event_attending checkbox" ></input>
                                     <span>
                                         Welcome Cocktail Reception, 5th November 2018 at 18:00hrs
                                     </span>
@@ -174,7 +174,7 @@
 
                             <div class="wthree-text">
                                 <label class="anim">
-                                    <input type="checkbox" name="event_attending" value="Dinner Reception, 7 November 2018" class="event_attending checkbox"></input>
+                                    <input type="checkbox" name="event_attending[]" value="Dinner Reception, 7 November 2018" class="event_attending checkbox"></input>
                                     <span>
                                         Cultural Dinner, 7th November 2018 at 19:00hrs
                                     </span>
@@ -620,7 +620,7 @@
 
                             <div class="wthree-text">
                                 <label class="anim">
-                                    <input type="checkbox" name="communication_channel" value="Email notification" class="communication_channel checkbox"></input>
+                                    <input type="radio" name="communication_channel" value="Email notification" class="communication_channel checkbox"></input>
                                     <span>Email notification</span>
                                 </label>
                                 <div class="clear"></div>
@@ -628,7 +628,7 @@
 
                             <div class="wthree-text">
                                 <label class="anim">
-                                    <input type="checkbox" name="communication_channel" value="Social media post"class="communication_channel checkbox"></input>
+                                    <input type="radio" name="communication_channel" value="Social media post"class="communication_channel checkbox"></input>
                                     <span>Social media post</span>
                                 </label>
                                 <div class="clear"></div>
@@ -636,7 +636,7 @@
 
                             <div class="wthree-text">
                                 <label class="anim">
-                                    <input type="checkbox" name="communication_channel" value="Website posting" class="communication_channel checkbox" ></input>
+                                    <input type="radio" name="communication_channel" value="Website posting" class="communication_channel checkbox" ></input>
                                     <span>Website posting</span>
                                 </label>
                                 <div class="clear"></div>
@@ -644,7 +644,7 @@
 
                             <div class="wthree-text">
                                 <label class="anim">
-                                    <input type="checkbox" name="communication_channel" value="AOSP" class="communication_channel checkbox" ></input>
+                                    <input type="radio" name="communication_channel" value="AOSP" class="communication_channel checkbox" ></input>
                                     <span>AOSP</span>
                                 </label>
                                 <div class="clear"></div>
@@ -652,7 +652,7 @@
 
                             <div class="wthree-text">
                                 <label class="anim">
-                                    <input type="checkbox" name="communication_channel" value="Other" class="communication_channel checkbox" ></input>
+                                    <input type="radio" name="communication_channel" value="Other" class="communication_channel checkbox" ></input>
                                     <span>Other</span>
                                 </label>
                                 <div class="clear"></div>
@@ -935,7 +935,7 @@
           function validateSectionA(){
             var proceed = true;
             var days_attending = $('.days_attending:checked');
-            var event_attending =$('.event_attending:checked');
+            var event_attending = $('.event_attending:checked');
             var err_count = 0;
 
             if(days_attending.length == 0){
