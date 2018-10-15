@@ -484,16 +484,13 @@ Route::post('delegates/{id}/registrationConfirmation', function (Request $reques
         //  If we have the user and transaction details
         if ($user) {
             //  Send the email
-            $email = Mail::to($provided_email)->send(new EventRegistered($user));
+            Mail::to($provided_email)->send(new EventRegistered($user));
 
-            return dd($email);
-            if ($email) {
-                //  Notify the user
-                Session::forget('alert');
-                $request->session()->flash('alert', array('Registration confirmation email sent to "'.$provided_email.'"</a>. Thank you', 'success'));
+            //  Notify the user
+            Session::forget('alert');
+            $request->session()->flash('alert', array('Registration confirmation email sent to "'.$provided_email.'"</a>. Thank you', 'success'));
 
-                return redirect('delegates/'.$id);
-            }
+            return redirect('delegates/'.$id);
         }
     }
 
@@ -521,15 +518,13 @@ Route::post('delegates/{id}/paymentConfirmation', function (Request $request, $i
             //  If we have the user and transaction details
             if ($user && $transaction) {
                 //  Send the email
-                $email = Mail::to($provided_email)->send(new PaymentSuccess($user, $transaction));
+                Mail::to($provided_email)->send(new PaymentSuccess($user, $transaction));
 
-                if ($email) {
-                    //  Notify the user
-                    Session::forget('alert');
-                    $request->session()->flash('alert', array('Payment confirmation email sent to "'.$provided_email.'"</a>. Thank you', 'success'));
+                //  Notify the user
+                Session::forget('alert');
+                $request->session()->flash('alert', array('Payment confirmation email sent to "'.$provided_email.'"</a>. Thank you', 'success'));
 
-                    return redirect('delegates/'.$id);
-                }
+                return redirect('delegates/'.$id);
             }
 
             //  If they have not paid
