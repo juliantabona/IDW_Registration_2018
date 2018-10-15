@@ -483,14 +483,16 @@ Route::post('delegates/{id}/registrationConfirmation', function (Request $reques
 
         //  If we have the user and transaction details
         if ($user) {
-            //  Notify the user
-            Session::forget('alert');
-            $request->session()->flash('alert', array('Registration confirmation email sent to "'.$provided_email.'"</a>. Thank you', 'success'));
-
             //  Send the email
-            Mail::to($provided_email)->send(new EventRegistered($user));
+            $email = Mail::to($provided_email)->send(new EventRegistered($user));
 
-            return redirect('delegates/'.$id);
+            if ($email) {
+                //  Notify the user
+                Session::forget('alert');
+                $request->session()->flash('alert', array('Registration confirmation email sent to "'.$provided_email.'"</a>. Thank you', 'success'));
+
+                return redirect('delegates/'.$id);
+            }
         }
     }
 
@@ -518,16 +520,18 @@ Route::post('delegates/{id}/paymentConfirmation', function (Request $request, $i
             //  If we have the user and transaction details
             if ($user && $transaction) {
                 //  Send the email
-                Mail::to($provided_email)->send(new PaymentSuccess($user, $transaction));
+                $email = Mail::to($provided_email)->send(new PaymentSuccess($user, $transaction));
+
+                if ($email) {
+                    //  Notify the user
+                    Session::forget('alert');
+                    $request->session()->flash('alert', array('Payment confirmation email sent to "'.$provided_email.'"</a>. Thank you', 'success'));
+
+                    return redirect('delegates/'.$id);
+                }
             }
 
-            //  Notify the user
-            Session::forget('alert');
-            $request->session()->flash('alert', array('Payment confirmation email sent to "'.$provided_email.'"</a>. Thank you', 'success'));
-
-            return redirect('delegates/'.$id);
-
-        //  If they have not paid
+            //  If they have not paid
         } else {
             Session::forget('alert');
             $request->session()->flash('alert', array('Email not sent! This delegate has not paid yet.', 'danger'));
