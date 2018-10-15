@@ -224,6 +224,8 @@ Route::get('/paymentSuccessful', function (Request $request) {
                 ]);
 
                 if ($transaction_state) {
+                    $transaction = $transaction->fresh();
+
                     if ($transaction) {
                         //  Get the user
                         $user = User::where('id', $transaction->user_id)->first();
@@ -525,7 +527,6 @@ Route::post('delegates/{id}/paymentConfirmation', function (Request $request, $i
             //  Get the paid transaction
             $transaction = Transaction::where('user_id', $user->id)->where('success_state', 1)->first();
 
-            return $transaction;
             //  If we have the user and transaction details
             if ($user && $transaction) {
                 //  Send the email

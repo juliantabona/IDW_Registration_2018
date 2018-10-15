@@ -40,21 +40,15 @@
 																<strong>Payment Details:</strong>
 															</p>
 															<ul style=" background: #e2ffe1; padding: 15px;">
-																<li>Card Type: {{ Request::get('p7') }}</li>
-																
-																<li>Card Number: {{ Request::get('MaskedCardNumber') }}</li>
-												
-																<li>Cardholder Name: {{ Request::get('p5') }}</li>
-										
-																<li>Email Address: {{ $user->email }}</li>
+																<li>Method Type: {{ $transaction->payment_type }}</li>
 								
-																<li>Merchandise: {{ Request::get('p8') }}</li>
+																<li>Merchandise: {{ $transaction->package_type }}</li>
 																
-																<li>Amount: BWP {{ Request::get('p6') }}</li>
+																<li>Amount: BWP {{ $transaction->amount }}</li>
 														
 																<li>Reference: {{ $transaction->id }}</li>
-										
-																<li>Transaction Date: {{ Request::get('TimeResponseSentToRequestor') }}</li>
+
+																<li>Email Address: {{ $user->email }}</li>
 															</ul>
 															<br>
 															<p style="font-size: 17px;">
