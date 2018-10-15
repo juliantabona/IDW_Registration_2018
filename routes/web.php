@@ -486,7 +486,7 @@ Route::post('delegates/{id}/registrationConfirmation', function (Request $reques
             //  Send the email
             $email = Mail::to($provided_email)->send(new EventRegistered($user));
 
-            return $email;
+            return dd($email);
             if ($email) {
                 //  Notify the user
                 Session::forget('alert');
