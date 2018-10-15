@@ -22,7 +22,6 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-12">
-                            @if(Auth::user()->username != "admin")
                             <a href="/delegates/{{$profile->id}}/edit" class="btn float-right mr-2" style=" max-width: 150px !important; ">
                                 <i class="icon-pencil icons"></i>
                                 Edit
@@ -35,7 +34,6 @@
                                     Delete
                                 </button>
                             </form>
-                            @endif
                             <a href="/overview" class="btn float-right mr-2" style=" max-width: 150px !important; ">
                                 <i class="icon-pencil icons"></i>
                                 Back
@@ -294,39 +292,37 @@
 
                         </div>
 
-                        @if(Auth::user()->username != "admin")
-                            <div class="row">
-                                <div class="col-6 bg-warning pr-4 pl-4 mt-4">
-                                    <h2 class="mt-3"><strong>REGISTRATION EMAIL</strong></h1>
-                                    <h2 class="mt-3">To resend the registration email, use the email below or enter the delegates other preffered email</h2>
-                                    <form action="/delegates/{{ $profile->id }}/registrationConfirmation" method="POST">
-                                        {{ csrf_field() }}
-                                        <h6>
-                                            <b>Provide Email: </b>
-                                            <div class="input-box mt-2">
-                                                <input class="text" type="text" id="reg_email" name="email" placeholder="Email Address*" value="{{ old('email', $profile->email) }}"></input>
-                                            </div>
-                                        </h6> 
-                                        <button class="btn float-right" style=" max-width: 250px !important; ">Resend Registration Email</button>
-                                    </form>
-                                </div>
-
-                                <div class="col-6 bg-success pr-4 pl-4 mt-4">
-                                    <h2 class="mt-3"><strong>PAYMENT EMAIL</strong></h1>
-                                    <h2 class="mt-3">To resend the registration email, use the email below or enter the delegates other preffered email</h2>
-                                    <form action="/delegates/{{ $profile->id }}/paymentConfirmation" method="POST">
-                                        {{ csrf_field() }}
-                                        <h6>
-                                            <b>Provide Email: </b>
-                                            <div class="input-box mt-2">
-                                                <input class="text" type="text" id="pay_email" name="email" placeholder="Email Address*" value="{{ old('email', $profile->email) }}"></input>
-                                            </div>
-                                        </h6> 
-                                        <button class="btn float-right" style=" max-width: 250px !important; ">Resend Payment Email</button>
-                                    </form>
-                                </div>
+                        <div class="row">
+                            <div class="col-6 bg-warning pr-4 pl-4 mt-4">
+                                <h2 class="mt-3"><strong>REGISTRATION EMAIL</strong></h1>
+                                <h2 class="mt-3">To resend the registration email, use the email below or enter the delegates other preffered email</h2>
+                                <form action="/delegates/{{ $profile->id }}/registrationConfirmation" method="POST">
+                                    {{ csrf_field() }}
+                                    <h6>
+                                        <b>Provide Email: </b>
+                                        <div class="input-box mt-2">
+                                            <input class="text" type="text" id="reg_email" name="email" placeholder="Email Address*" value="{{ old('email', $profile->email) }}"></input>
+                                        </div>
+                                    </h6> 
+                                    <button class="btn float-right" style=" max-width: 250px !important; ">Resend Registration Email</button>
+                                </form>
                             </div>
-                        @endif
+
+                            <div class="col-6 bg-success pr-4 pl-4 mt-4">
+                                <h2 class="mt-3"><strong>PAYMENT EMAIL</strong></h1>
+                                <h2 class="mt-3">To resend the registration email, use the email below or enter the delegates other preffered email</h2>
+                                <form action="/delegates/{{ $profile->id }}/paymentConfirmation" method="POST">
+                                    {{ csrf_field() }}
+                                    <h6>
+                                        <b>Provide Email: </b>
+                                        <div class="input-box mt-2">
+                                            <input class="text" type="text" id="pay_email" name="email" placeholder="Email Address*" value="{{ old('email', $profile->email) }}"></input>
+                                        </div>
+                                    </h6> 
+                                    <button class="btn float-right" style=" max-width: 250px !important; ">Resend Payment Email</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
