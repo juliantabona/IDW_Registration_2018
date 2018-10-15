@@ -493,6 +493,8 @@ Route::post('delegates/{id}/registrationConfirmation', function (Request $reques
 
             //  Send the email
             Mail::to($provided_email)->send(new EventRegistered($user));
+
+            return redirect('delegates/'.$id);
         }
     }
 
