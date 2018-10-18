@@ -576,7 +576,14 @@ Route::get('download', function () {
 
                 $amount = number_format($paidTransaction->amount, 2);
                 $payment_type = $paidTransaction->payment_type;
-                $package_type = $paidTransaction->package_type;
+
+                if (in_array($paidTransaction->amount, array(2064, 6192))) {
+                    $package_type = 'Early Ticket';
+                } elseif (in_array($paidTransaction->amount, array(2580, 3096, 7224))) {
+                    $package_type = 'Standard Ticket';
+                } else {
+                    $package_type = '';
+                }
             } elseif (collect($user->transactions)->contains('success_state', '3')) {
                 $result = 'TR';
             } elseif (collect($user->transactions)->contains('success_state', '0')) {
