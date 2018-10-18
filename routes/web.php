@@ -437,10 +437,21 @@ Route::post('delegates/{id}/paymentApproval', function (Request $request, $id) {
         $transaction = Transaction::find($transaction_ID);
         if (!empty($transaction)) {
             if ($transaction->success_state != 1) {
+                $type = '';
+                $amount = $request->input('package_type');
+
+                if (in_array($amount, array(2064, 6192))) {
+                    $type = 'Early Ticket';
+                }
+
+                if (in_array($amount, array(2580, 3096, 7224))) {
+                    $type = 'Standard Ticket';
+                }
+
                 $transaction_state = $transaction->update([
                     'payment_type' => $request->input('payment_type'),
-                    'package_type' => 'Standard Ticket',
-                    'amount' => $request->input('package_type'),
+                    'package_type' => $type,
+                    'amount' => $amount,
                     'success_state' => 1,                       //  SUCCESSFUL
                 ]);
 
@@ -557,18 +568,37 @@ Route::get('download', function () {
 
     $printableList = collect($users)->map(function ($user) {
         $result = '';
-        if (collect($user->transactions)->contains('success_state', '1')) {
-            $result = 'PAID';
-        } elseif (collect($user->transactions)->contains('success_state', '3')) {
-            $result = 'TR';
-        } elseif (collect($user->transactions)->contains('success_state', '0')) {
-            $result = 'FP';
+
+        if (!empty($user->transactions)) {
+            if (collect($user->transactions)->contains('success_state', '1')) {
+                $result = 'PAID';
+                $paidTransaction = collect($user->transactions)->where('success_state', '1')->first();
+
+                $amount = number_format($paidTransaction->amount, 2);
+                $payment_type = $paidTransaction->payment_type;
+                $package_type = $paidTransaction->package_type;
+            } elseif (collect($user->transactions)->contains('success_state', '3')) {
+                $result = 'TR';
+            } elseif (collect($user->transactions)->contains('success_state', '0')) {
+                $result = 'FP';
+            } else {
+                $result = 'N/A';
+            }
         } else {
             $result = 'N/A';
         }
 
-        return collect($user)->forget(['transactions', 'username', 'password',
-                                       'created_at', 'updated_at', ])->put('payment', $result);
+        if ($result != 'PAID') {
+            $amount = '';
+            $payment_type = '';
+            $package_type = '';
+        }
+
+        return collect($user)->forget(
+                ['transactions', 'username', 'password', 'created_at', 'updated_at', 'deleted_at']
+            )->put('amount_paid (BWP)', $amount)
+             ->put('payment_type', $payment_type)
+             ->put('package_type', $package_type);
     });
 
     $list = $printableList->toArray();

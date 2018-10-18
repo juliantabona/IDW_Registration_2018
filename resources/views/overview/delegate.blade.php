@@ -277,9 +277,12 @@
                                                             <option value="Other">Other</option>
                                                         </select>
                                                         <select class="form-control mt-2" name="package_type" data-cesta-feira-attribute="">
-                                                            <option value="2580">Students: 2,500 (BWP)</option>
-                                                            <option value="3096">LMIC COUNTRIES: 3,000 (BWP)</option>
-                                                            <option value="7224">All Others: 7,000 (BWP)</option>
+                                                            <option value="2064">Students: 2,000 (BWP) - Early Ticket</option>
+                                                            <option value="2064">LMIC COUNTRIES: 2,000 (BWP) - Early Ticket</option>
+                                                            <option value="6192">All Others: 6,000 (BWP) - Early Ticket</option>
+                                                            <option value="2580">Students: 2,500 (BWP) - Standard Ticket</option>
+                                                            <option value="3096">LMIC COUNTRIES: 3,000 (BWP) - Standard Ticket</option>
+                                                            <option value="7224">All Others: 7,000 (BWP) - Standard Ticket</option>
                                                         </select>
                                                         <button type="button" class="btn mt-3" onclick="getConfirmation();">Approve Payment</button>
                                                     </form>
