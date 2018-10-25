@@ -585,41 +585,20 @@ Route::get('download', function () {
                     $package_type = '';
                 }
             } elseif (collect($user->transactions)->contains('success_state', '3')) {
-                $bankTransferTransaction = collect($user->transactions)->where('success_state', '3')->first();
                 $result = 'TR';
-                $amount = number_format($bankTransferTransaction->amount, 2);
-                $payment_type = $bankTransferTransaction->payment_type;
-
-                if (in_array($bankTransferTransaction->amount, array(2064, 6192))) {
-                    $package_type = 'Early Ticket';
-                } elseif (in_array($bankTransferTransaction->amount, array(2580, 3096, 7224))) {
-                    $package_type = 'Standard Ticket';
-                } else {
-                    $package_type = '';
-                }
             } elseif (collect($user->transactions)->contains('success_state', '0')) {
-                $FailedTransaction = collect($user->transactions)->where('success_state', '0')->first();
                 $result = 'FP';
-                $amount = number_format($FailedTransaction->amount, 2);
-                $payment_type = $FailedTransaction->payment_type;
-                if (in_array($FailedTransaction->amount, array(2064, 6192))) {
-                    $package_type = 'Early Ticket';
-                } elseif (in_array($FailedTransaction->amount, array(2580, 3096, 7224))) {
-                    $package_type = 'Standard Ticket';
-                } else {
-                    $package_type = '';
-                }
             } else {
-                $amount = '';
-                $payment_type = '';
-                $package_type = '';
                 $result = 'N/A';
             }
         } else {
+            $result = 'N/A';
+        }
+
+        if ($result != 'PAID') {
             $amount = '';
             $payment_type = '';
             $package_type = '';
-            $result = 'N/A';
         }
 
         return collect($user)->forget(
