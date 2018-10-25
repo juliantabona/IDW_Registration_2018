@@ -585,9 +585,15 @@ Route::get('download', function () {
                     $package_type = '';
                 }
             } elseif (collect($user->transactions)->contains('success_state', '3')) {
+                $bankTransferTransaction = collect($user->transactions)->where('success_state', '3')->first();
                 $result = 'TR';
+                $amount = number_format($bankTransferTransaction->amount, 2);
+                $payment_type = $bankTransferTransaction->payment_type;
             } elseif (collect($user->transactions)->contains('success_state', '0')) {
+                $FailedTransaction = collect($user->transactions)->where('success_state', '0')->first();
                 $result = 'FP';
+                $amount = number_format($FailedTransaction->amount, 2);
+                $payment_type = $FailedTransaction->payment_type;
             } else {
                 $result = 'N/A';
             }
@@ -599,13 +605,17 @@ Route::get('download', function () {
             $amount = '';
             $payment_type = '';
             $package_type = '';
+            $hasPaid = 'NO';
+        } else {
+            $hasPaid = 'YES';
         }
 
         return collect($user)->forget(
                 ['transactions', 'username', 'password', 'created_at', 'updated_at', 'deleted_at']
             )->put('amount_paid (BWP)', $amount)
              ->put('payment_type', $payment_type)
-             ->put('package_type', $package_type);
+             ->put('package_type', $package_type)
+             ->put('PAID', $hasPaid);
     });
 
     $list = $printableList->toArray();
