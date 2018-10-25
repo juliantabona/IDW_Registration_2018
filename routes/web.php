@@ -595,16 +595,19 @@ Route::get('download', function () {
                 $amount = number_format($FailedTransaction->amount, 2);
                 $payment_type = $FailedTransaction->payment_type;
             } else {
+                $amount = '';
+                $payment_type = '';
+                $package_type = '';
                 $result = 'N/A';
             }
         } else {
+            $amount = '';
+            $payment_type = '';
+            $package_type = '';
             $result = 'N/A';
         }
 
         if ($result != 'PAID') {
-            $amount = '';
-            $payment_type = '';
-            $package_type = '';
             $hasPaid = 'NO';
         } else {
             $hasPaid = 'YES';
