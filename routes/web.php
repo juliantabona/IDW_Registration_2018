@@ -622,18 +622,12 @@ Route::get('download', function () {
             $result = 'N/A';
         }
 
-        if ($result != 'PAID') {
-            $hasPaid = 'NO';
-        } else {
-            $hasPaid = 'YES';
-        }
-
         return collect($user)->forget(
                 ['transactions', 'username', 'password', 'created_at', 'updated_at', 'deleted_at']
             )->put('amount_paid (BWP)', $amount)
              ->put('payment_type', $payment_type)
              ->put('package_type', $package_type)
-             ->put('PAID', $hasPaid);
+             ->put('Status', $result);
     });
 
     $list = $printableList->toArray();
